@@ -1,6 +1,14 @@
 ﻿using System;
 namespace game2048
 {
+    public enum Dir
+    {
+        Left = 0,
+        Rigth,
+        Up,
+        Down
+    }
+
     public class Bot
     {
         int size;
@@ -115,14 +123,6 @@ namespace game2048
                 if (map[i, k] != -1) res++;
             }
             return res;
-        }
-
-        public enum Dir
-        {
-            Left = 0,
-            Rigth,
-            Up,
-            Down
         }
 
         public Dir Ask(Model model)

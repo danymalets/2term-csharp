@@ -101,10 +101,10 @@ namespace game2048
 
                     switch (bot.Ask(model))
                     {
-                        case Bot.Dir.Left: Console.WriteLine("<"); model.Left(); break;
-                        case Bot.Dir.Rigth: Console.WriteLine(">"); model.Rigth(); break;
-                        case Bot.Dir.Up: Console.WriteLine("^"); model.Up(); break;
-                        case Bot.Dir.Down: Console.WriteLine("V"); model.Down(); break;
+                        case Dir.Left: Console.WriteLine("<"); model.Left(); break;
+                        case Dir.Rigth: Console.WriteLine(">"); model.Rigth(); break;
+                        case Dir.Up: Console.WriteLine("^"); model.Up(); break;
+                        case Dir.Down: Console.WriteLine("V"); model.Down(); break;
                         default:
                             break;
                     }
