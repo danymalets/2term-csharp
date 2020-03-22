@@ -16,44 +16,56 @@ namespace game2048
             Program program = new Program();
             int cnt = 0;
 
-           
-            Console.WriteLine("Enter 1 - BOT, 2 - YOU");
-            string s = Console.ReadLine();
-            if (s == "1")
+
+            Console.WriteLine("Enter 1 - BOT, 2 - YOU:");
+            while (true)
             {
-                BOT = true;
-            }
-            else if (s == "2")
-            {
-                BOT = false;
-            }
-            else{
-                Console.WriteLine("Error");
-                return;
+                string s = Console.ReadLine();
+                if (s == "1")
+                {
+                    BOT = true;
+                    break;
+                }
+                else if (s == "2")
+                {
+                    BOT = false;
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("Error! Try again:");
+                }
             }
             if (BOT)
             {
-                Console.WriteLine("Enter the number of starts");
-                try
+                Console.WriteLine("Enter the number of starts:");
+                while (true)
                 {
-                    N = int.Parse(Console.ReadLine());
-                }
-                catch
-                {
-                    Console.WriteLine("Error");
-                    return;
+                    try
+                    {
+                        N = int.Parse(Console.ReadLine());
+                    }
+                    catch
+                    {
+                        Console.WriteLine("Error! Try again:");
+                        continue;
+                    }
+                    break;
                 }
 
-
-                Console.WriteLine("Enter SLEEP");
-                try
+                Console.WriteLine("Enter SLEEP:");
+                while (true)
                 {
-                    SLEEP = int.Parse(Console.ReadLine());
-                }
-                catch
-                {
-                    Console.WriteLine("Error");
-                    return;
+                    try
+                    {
+                        SLEEP = int.Parse(Console.ReadLine());
+                    }
+                    catch
+                    {
+                        Console.WriteLine("Error! Try again:");
+                        continue;
+                    }
+                    break;
                 }
             }
             else
