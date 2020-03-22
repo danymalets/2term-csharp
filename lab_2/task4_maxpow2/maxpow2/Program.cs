@@ -26,7 +26,17 @@ namespace maxpow2
                 try
                 {
                     l = UInt64.Parse(Console.ReadLine());
+                    if (l == 0)
+                    {
+                        Console.WriteLine("Error! Try again:");
+                        continue;
+                    }
                     r = UInt64.Parse(Console.ReadLine());
+                    if (r == 0)
+                    {
+                        Console.WriteLine("Error! Try again:");
+                        continue;
+                    }
                     break;
                 }
                 catch
@@ -40,8 +50,7 @@ namespace maxpow2
                 l = r;
                 r = t;
             }
-            if (l == 0) Console.WriteLine(0);
-            else Console.WriteLine("Max power of two - " + (Solve(r) - Solve(l - 1)));
+            else Console.WriteLine("Max power of two = " + (Solve(r) - Solve(l - 1)));
         }
     }
 }
