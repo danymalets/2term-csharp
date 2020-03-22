@@ -29,3 +29,13 @@
 /Users/danielmalec/Desktop/Cs/2/reverse/reverse/obj/Debug/netcoreapp3.1/reverse.AssemblyInfo.cs
 /Users/danielmalec/Desktop/Cs/2/reverse/reverse/obj/Debug/netcoreapp3.1/reverse.dll
 /Users/danielmalec/Desktop/Cs/2/reverse/reverse/obj/Debug/netcoreapp3.1/reverse.pdb
+/Users/danielmalec/Desktop/Cs/lab_2/task2_reverse/reverse/bin/Debug/netcoreapp3.1/reverse.deps.json
+/Users/danielmalec/Desktop/Cs/lab_2/task2_reverse/reverse/bin/Debug/netcoreapp3.1/reverse.runtimeconfig.json
+/Users/danielmalec/Desktop/Cs/lab_2/task2_reverse/reverse/bin/Debug/netcoreapp3.1/reverse.runtimeconfig.dev.json
+/Users/danielmalec/Desktop/Cs/lab_2/task2_reverse/reverse/bin/Debug/netcoreapp3.1/reverse.dll
+/Users/danielmalec/Desktop/Cs/lab_2/task2_reverse/reverse/bin/Debug/netcoreapp3.1/reverse.pdb
+/Users/danielmalec/Desktop/Cs/lab_2/task2_reverse/reverse/obj/Debug/netcoreapp3.1/reverse.csprojAssemblyReference.cache
+/Users/danielmalec/Desktop/Cs/lab_2/task2_reverse/reverse/obj/Debug/netcoreapp3.1/reverse.AssemblyInfoInputs.cache
+/Users/danielmalec/Desktop/Cs/lab_2/task2_reverse/reverse/obj/Debug/netcoreapp3.1/reverse.AssemblyInfo.cs
+/Users/danielmalec/Desktop/Cs/lab_2/task2_reverse/reverse/obj/Debug/netcoreapp3.1/reverse.dll
+/Users/danielmalec/Desktop/Cs/lab_2/task2_reverse/reverse/obj/Debug/netcoreapp3.1/reverse.pdb
