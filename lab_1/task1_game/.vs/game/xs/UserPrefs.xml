@@ -1,17 +1,17 @@
 ﻿<Properties StartupConfiguration="{C7B8901E-8B10-4A1F-82CE-F397A7477F7C}|Default">
   <MonoDevelop.Ide.ItemProperties.game PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="game/bot.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="game/Program.cs">
     <Files>
-      <File FileName="game/Program.cs" Line="47" Column="22" />
+      <File FileName="game/Program.cs" Line="64" Column="22" />
       <File FileName="game/model.cs" />
-      <File FileName="game/bot.cs" Line="126" Column="10" />
+      <File FileName="game/bot.cs" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="game" expanded="True">
             <Node name="game" expanded="True">
-              <Node name="bot.cs" selected="True" />
+              <Node name="Program.cs" selected="True" />
             </Node>
           </Node>
         </State>
