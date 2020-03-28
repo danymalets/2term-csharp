@@ -1,15 +1,15 @@
 ﻿<Properties StartupConfiguration="{36BC9966-0E99-4710-8F59-013E35C67C3F}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="HumanApplication/Human.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="HumanApplication/Program.cs">
     <Files>
-      <File FileName="HumanApplication/Program.cs" Line="115" Column="28" />
-      <File FileName="HumanApplication/Human.cs" Line="62" Column="33" />
+      <File FileName="HumanApplication/Program.cs" Line="313" Column="89" />
+      <File FileName="HumanApplication/Human.cs" Line="18" Column="10" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="HumanApplication" expanded="True">
             <Node name="HumanApplication" expanded="True">
-              <Node name="Human.cs" selected="True" />
+              <Node name="Program.cs" selected="True" />
             </Node>
           </Node>
         </State>
