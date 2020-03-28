@@ -311,6 +311,10 @@ namespace HumanApplication
 
             Console.WriteLine();
             return new Human(fullName, identifier, isMale, dateOfBirth, mother, father);
+<<<<<<< HEAD
+=======
+
+>>>>>>> f1b13ccf061a40115c70221048a27296f30346f2
         }
 
         static Human FindHuman(string identifier)
