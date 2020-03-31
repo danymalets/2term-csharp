@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 
 namespace HumanApplication
@@ -13,10 +13,6 @@ namespace HumanApplication
         public Human Mother { get; private set; }
         public Human Father { get; private set; }
         readonly private List<Human> Children = new List<Human>();
-
-        public Human()
-        {
-        }
 
         public Human(string fullName, string identifier, bool isMale)
         {

@@ -13,14 +13,14 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/danielmalec/Desktop/Cs/lab_3/HumanApplication/HumanApplication/HumanApplication.csproj",
+      "projectUniqueName": "/Users/danielmalec/Desktop/csharp-2term/lab_3/HumanApplication/HumanApplication/HumanApplication.csproj",
       "projectName": "HumanApplication",
-      "projectPath": "/Users/danielmalec/Desktop/Cs/lab_3/HumanApplication/HumanApplication/HumanApplication.csproj",
+      "projectPath": "/Users/danielmalec/Desktop/csharp-2term/lab_3/HumanApplication/HumanApplication/HumanApplication.csproj",
       "packagesPath": "/Users/danielmalec/.nuget/packages/",
-      "outputPath": "/Users/danielmalec/Desktop/Cs/lab_3/HumanApplication/HumanApplication/obj/",
+      "outputPath": "/Users/danielmalec/Desktop/csharp-2term/lab_3/HumanApplication/HumanApplication/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/danielmalec/.nuget/NuGet/NuGet.Config"
+        "/Users/danielmalec/.config/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"
