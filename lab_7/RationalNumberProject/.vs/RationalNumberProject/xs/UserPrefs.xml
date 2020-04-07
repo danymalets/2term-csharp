@@ -1,0 +1,26 @@
+﻿<Properties StartupConfiguration="{D6B3DA1F-C7B0-4669-8350-96E295D118ED}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="RationalNumberProject/Program.cs">
+    <Files>
+      <File FileName="RationalNumberProject/Program.cs" Line="9" Column="10" />
+      <File FileName="RationalNumberProject/RationalNumber.cs" Line="154" Column="30" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="RationalNumberProject" expanded="True">
+            <Node name="RationalNumberProject" expanded="True">
+              <Node name="Program.cs" selected="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.ItemProperties.RationalNumberProject PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>
