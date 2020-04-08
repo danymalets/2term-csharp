@@ -19,8 +19,8 @@ namespace maxpow2
         static void Main(string[] args)
         {
             
-            ulong l = 0, r = 0;
-            Console.WriteLine("Enter l, r:");
+            ulong l, r;
+            Console.WriteLine("Enter l and r in different lines:");
             while (true)
             {
                 try
@@ -32,7 +32,7 @@ namespace maxpow2
                         continue;
                     }
                     r = UInt64.Parse(Console.ReadLine());
-                    if (r == 0)
+                    if (r == 0 || l > r)
                     {
                         Console.WriteLine("Error! Try again:");
                         continue;
@@ -44,13 +44,7 @@ namespace maxpow2
                     Console.WriteLine("Error! Try again:");
                 }
             }
-            if (l > r)
-            {
-                ulong t = l;
-                l = r;
-                r = t;
-            }
-            else Console.WriteLine("Max power of two = " + (Solve(r) - Solve(l - 1)));
+            Console.WriteLine("Max power of two = " + (Solve(r) - Solve(l - 1)));
         }
     }
 }

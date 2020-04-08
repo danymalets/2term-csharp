@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/danielmalec/Desktop/Cs/lab_2/task4_maxpow2/maxpow2/maxpow2.csproj",
+      "projectUniqueName": "/Users/danielmalec/Desktop/csharp-2term/lab_2/task4_maxpow2/maxpow2/maxpow2.csproj",
       "projectName": "maxpow2",
-      "projectPath": "/Users/danielmalec/Desktop/Cs/lab_2/task4_maxpow2/maxpow2/maxpow2.csproj",
+      "projectPath": "/Users/danielmalec/Desktop/csharp-2term/lab_2/task4_maxpow2/maxpow2/maxpow2.csproj",
       "packagesPath": "/Users/danielmalec/.nuget/packages/",
-      "outputPath": "/Users/danielmalec/Desktop/Cs/lab_2/task4_maxpow2/maxpow2/obj/",
+      "outputPath": "/Users/danielmalec/Desktop/csharp-2term/lab_2/task4_maxpow2/maxpow2/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/danielmalec/.config/NuGet/NuGet.Config"
@@ -56,7 +56,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.1.102/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.1.200/RuntimeIdentifierGraph.json"
       }
     }
   }
