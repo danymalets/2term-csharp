@@ -12,7 +12,7 @@ namespace HumanApplication
         public Human Partner { get; private set; }
         public Human Mother { get; private set; }
         public Human Father { get; private set; }
-        readonly private List<Human> Children = new List<Human>();
+        List<Human> Children = new List<Human>();
 
         public Human(string fullName, string identifier, bool isMale)
         {
@@ -64,7 +64,7 @@ namespace HumanApplication
         public void Write()
         {
             int age = GetAge(DateOfBirth);
-            Console.Write(FullName + ", id = " + Identifier + ", " + age);
+            Console.Write($"{FullName}, id = {Identifier}, {age}");
             if (age == 1) Console.Write(" year, ");
             else Console.Write(" years, ");
 
@@ -74,29 +74,29 @@ namespace HumanApplication
             if (IsMale)
             {
                 if (Partner == null) Console.Write("no wife");
-                else Console.Write("Wife - " + Partner.FullName + " [id=" + Partner.Identifier + "] ");
+                else Console.Write($"Wife - {Partner.FullName} [id={Partner.Identifier}] ");
             }
             else
             {
                 if (Partner == null) Console.Write("no husband");
-                else Console.Write("Husband - " + Partner.FullName + " [id=" + Partner.Identifier + "] ");
+                else Console.Write($"Husband - {Partner.FullName} [id={Partner.Identifier}] ");
             }
             Console.Write(", ");
 
             if (Mother == null) Console.Write("no mother");
-            else Console.Write("Mother - " + Mother.FullName + " [id=" + Mother.Identifier + "] ");
+            else Console.Write($"Mother - {Mother.FullName} [id={Mother.Identifier}],");
+
             Console.Write(", ");
 
             if (Father == null) Console.Write("no father");
-            else Console.Write("Father - " + Father.FullName + " [id=" + Father.Identifier + "] ");
+            else Console.Write($"Father - {Father.FullName} [id={Father.Identifier}]");
             Console.WriteLine();
 
             if (Children.Count == 0) Console.WriteLine("no children");
             else Console.WriteLine("Children list:");
             for (int i = 0; i < Children.Count; i++)
             {
-                Console.WriteLine(i + 1 + ") " + Children[i].FullName +
-                    " [id=" + Children[i].Identifier + "]");
+                Console.WriteLine($"{i + 1}) {Children[i].FullName} [id={Children[i].Identifier}]");
             }
         }
 
