@@ -2,9 +2,9 @@
   <MonoDevelop.Ide.ItemProperties.game PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.Workbench ActiveDocument="game/Program.cs">
     <Files>
-      <File FileName="game/Program.cs" Line="64" Column="22" />
-      <File FileName="game/model.cs" />
-      <File FileName="game/bot.cs" />
+      <File FileName="game/Program.cs" Line="68" Column="18" />
+      <File FileName="game/model.cs" Line="31" Column="29" />
+      <File FileName="game/bot.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">

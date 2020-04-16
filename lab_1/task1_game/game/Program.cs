@@ -16,7 +16,6 @@ namespace game2048
             Program program = new Program();
             int cnt = 0;
 
-
             Console.WriteLine("Enter 1 - BOT, 2 - YOU:");
             while (true)
             {
@@ -74,13 +73,14 @@ namespace game2048
             }
             for (int i = 0; i < N; i++)
             {
-                if (program.Start()) cnt++;
+                if (Start()) cnt++;
             }
             Console.WriteLine(cnt + " / " + N);
         }
 
-        bool Start()
+        static bool Start()
         {
+            Console.Clear();
             Model model = new Model(size);
             Bot bot = new Bot(size);
             while (true)
@@ -97,7 +97,6 @@ namespace game2048
                 if (BOT)
                 {
                     Thread.Sleep(SLEEP / 2);
-
 
                     switch (bot.Ask(model))
                     {
@@ -121,8 +120,6 @@ namespace game2048
                         case ConsoleKey.G: Start(); break;
                     }
                 }
-               
-
             }
         }
     }
