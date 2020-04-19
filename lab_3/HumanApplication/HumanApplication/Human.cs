@@ -61,43 +61,45 @@ namespace HumanApplication
             return true;
         }
 
-        public void Write()
+        public override string ToString()
         {
+            string res = "";
             int age = GetAge(DateOfBirth);
-            Console.Write($"{FullName}, id = {Identifier}, {age}");
-            if (age == 1) Console.Write(" year, ");
-            else Console.Write(" years, ");
+            res += $"{FullName}, id = {Identifier}, {age}";
+            if (age == 1) res += " year, ";
+            else res += " years, ";
 
-            if (IsMale) Console.WriteLine("Male");
-            else Console.WriteLine("Female");
+            if (IsMale) res += "Male\n";
+            else res += "Female\n";
 
             if (IsMale)
             {
-                if (Partner == null) Console.Write("no wife");
-                else Console.Write($"Wife - {Partner.FullName} [id={Partner.Identifier}] ");
+                if (Partner == null) res += "no wife";
+                else res += $"Wife - {Partner.FullName} [id={Partner.Identifier}] ";
             }
             else
             {
-                if (Partner == null) Console.Write("no husband");
-                else Console.Write($"Husband - {Partner.FullName} [id={Partner.Identifier}] ");
+                if (Partner == null) res += "no husband";
+                else res += $"Husband - {Partner.FullName} [id={Partner.Identifier}] ";
             }
-            Console.Write(", ");
+            res += ", ";
 
-            if (Mother == null) Console.Write("no mother");
-            else Console.Write($"Mother - {Mother.FullName} [id={Mother.Identifier}],");
+            if (Mother == null) res += "no mother";
+            else res += $"Mother - {Mother.FullName} [id={Mother.Identifier}]";
 
-            Console.Write(", ");
+            res += ", ";
 
-            if (Father == null) Console.Write("no father");
-            else Console.Write($"Father - {Father.FullName} [id={Father.Identifier}]");
-            Console.WriteLine();
+            if (Father == null) res += "no father";
+            else res += $"Father - {Father.FullName} [id={Father.Identifier}]";
+            res += "\n";
 
-            if (Children.Count == 0) Console.WriteLine("no children");
-            else Console.WriteLine("Children list:");
+            if (Children.Count == 0) res += "no children";
+            else res += "Children list:\n";
             for (int i = 0; i < Children.Count; i++)
             {
-                Console.WriteLine($"{i + 1}) {Children[i].FullName} [id={Children[i].Identifier}]");
+                res += $"{i + 1}) {Children[i].FullName} [id={Children[i].Identifier}]\n";
             }
+            return res;
         }
 
         public class FullNameComparer : IComparer<Human>

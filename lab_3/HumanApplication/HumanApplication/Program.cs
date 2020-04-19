@@ -45,7 +45,7 @@ namespace HumanApplication
                             {
                                 Console.WriteLine();
                                 Console.Write(i + 1 + ". ");
-                                humans[i].Write();
+                                Console.WriteLine(humans[i]);
                             }
                         }
                         break;
@@ -87,7 +87,7 @@ namespace HumanApplication
                         else
                         {
                             Console.WriteLine("Human found:");
-                            human.Write();
+                            Console.WriteLine(human);
                         }
                         break;
                     case 5:

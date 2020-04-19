@@ -1,8 +1,8 @@
 ﻿<Properties StartupConfiguration="{36BC9966-0E99-4710-8F59-013E35C67C3F}|Default">
   <MonoDevelop.Ide.Workbench ActiveDocument="HumanApplication/Human.cs">
     <Files>
-      <File FileName="HumanApplication/Program.cs" Line="313" Column="89" />
-      <File FileName="HumanApplication/Human.cs" Line="88" Column="1" />
+      <File FileName="HumanApplication/Program.cs" Line="41" Column="29" />
+      <File FileName="HumanApplication/Human.cs" Line="97" Column="44" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
