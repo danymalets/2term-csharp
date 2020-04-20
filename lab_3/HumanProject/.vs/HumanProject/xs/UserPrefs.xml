@@ -1,0 +1,26 @@
+﻿<Properties StartupConfiguration="{CD2D98A7-DAC0-4BA9-87A0-B3AEA5BF8A11}|Default">
+  <MonoDevelop.Ide.ItemProperties.HumanProject PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="HumanProject/Program.cs">
+    <Files>
+      <File FileName="HumanProject/Program.cs" Line="4" Column="1" />
+      <File FileName="HumanProject/Human.cs" Line="4" Column="23" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="HumanProject" expanded="True">
+            <Node name="HumanProject" expanded="True">
+              <Node name="Program.cs" selected="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>

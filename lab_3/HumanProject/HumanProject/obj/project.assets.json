@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/danielmalec/Desktop/csharp-2term/lab_3/HumanApplication/HumanApplication/HumanApplication.csproj",
-      "projectName": "HumanApplication",
-      "projectPath": "/Users/danielmalec/Desktop/csharp-2term/lab_3/HumanApplication/HumanApplication/HumanApplication.csproj",
+      "projectUniqueName": "/Users/danielmalec/Desktop/csharp-2term/lab_3/HumanProject/HumanProject/HumanProject.csproj",
+      "projectName": "HumanProject",
+      "projectPath": "/Users/danielmalec/Desktop/csharp-2term/lab_3/HumanProject/HumanProject/HumanProject.csproj",
       "packagesPath": "/Users/danielmalec/.nuget/packages/",
-      "outputPath": "/Users/danielmalec/Desktop/csharp-2term/lab_3/HumanApplication/HumanApplication/obj/",
+      "outputPath": "/Users/danielmalec/Desktop/csharp-2term/lab_3/HumanProject/HumanProject/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/danielmalec/.config/NuGet/NuGet.Config"

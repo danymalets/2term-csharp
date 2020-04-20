@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 
-namespace HumanApplication
+namespace HumanProject
 {
     class Program
     {
