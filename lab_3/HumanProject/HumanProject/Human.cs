@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace HumanProject
 {
-    public class Human
+    public class Human : IComparable<Human>
     {
         public string FullName { get; private set; }
         public string Identifier { get; private set; }
@@ -12,7 +12,7 @@ namespace HumanProject
         public Human Partner { get; private set; }
         public Human Mother { get; private set; }
         public Human Father { get; private set; }
-        List<Human> Children = new List<Human>();
+        public List<Human> Children = new List<Human>();
 
         public Human(string fullName, string identifier, bool isMale)
         {
@@ -102,12 +102,9 @@ namespace HumanProject
             return res;
         }
 
-        public class FullNameComparer : IComparer<Human>
+        public int CompareTo(Human human)
         {
-            public int Compare(Human h1, Human h2)
-            {
-                return string.Compare(h1.FullName, h2.FullName);
-            }
+            return -DateOfBirth.CompareTo(human.DateOfBirth);
         }
 
         public static bool Marriage(Human human1, Human human2)

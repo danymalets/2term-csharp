@@ -18,7 +18,7 @@ namespace HumanProject
                                   "3. Add new Human (FULL)\n" +
                                   "4. Find human\n" +
                                   "5. Remove human from list\n" +
-                                  "6. Sort by name\n" +
+                                  "6. Sort by age\n" +
                                   "7. Add parent-son relationship\n" +
                                   "8. Arrange a marriage\n" +
                                   "9. Make a divorce\n" +
@@ -109,7 +109,7 @@ namespace HumanProject
                         }
                         break;
                     case 6:
-                        humans.Sort(new Human.FullNameComparer());
+                        humans.Sort();
                         Console.WriteLine("Successfully!");
                         break;
                     case 7:
