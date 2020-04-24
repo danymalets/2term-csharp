@@ -1,43 +1,34 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
+using System.Numerics;
 using System.Text.RegularExpressions;
 
 namespace RationalNumberProject
 {
-    public class Rational : IComparable
+    public class Rational : IComparable<Rational>, IFormattable
     {
-        public long Numerator { get; private set; }
+        public long Numerator { get; private set;  }
 
-        public long Denominator
-        {
-            get
-            {
-                return _denominator;
-            }
-            private set
-            {
-                if (value > 0) _denominator = value;
-                else
-                {
-                    throw new Exception("Denominator must be positive");
-                }
-            }
-        }
-        private long _denominator;
+        public long Denominator { get; private set; }
 
         public Rational(long numerator, long denominator)
         {
-            if (denominator < 0)
-            {
-                Numerator = -numerator;
-                Denominator = -denominator;
-            }
-            else
-            {
-                Numerator = numerator;
-                Denominator = denominator;
-            }
+            Numerator = numerator;
+            Denominator = denominator;
             Reduce();
+        }
+
+        void Reduce()
+        {
+            long gcd = Math.Abs(GCD(Numerator, Denominator)) * Math.Sign(Denominator);
+            Numerator /= gcd;
+            Denominator /= gcd;
+        }
+
+        public static long GCD(long a, long b)
+        {
+            return b == 0 ? a : GCD(b, a % b);
         }
 
         public Rational(long numerator)
@@ -46,16 +37,9 @@ namespace RationalNumberProject
             Denominator = 1;
         }
 
-        private void Reduce()
+        public static long LCM(long a, long b)
         {
-            long r = GCD(Math.Abs(Numerator), Denominator);
-            Numerator /= r;
-            Denominator /= r;
-        }
-
-        public static long GCD(long a, long b)
-        {
-            return b > 0 ? GCD(b, a % b) : a;
+            return a / GCD(a, b) * b;
         }
 
         public static Rational operator -(Rational a)
@@ -65,9 +49,9 @@ namespace RationalNumberProject
 
         public static Rational operator +(Rational a, Rational b)
         {
-            return new Rational(a.Numerator * b.Denominator +
-                                b.Numerator * a.Denominator,
-                                a.Denominator * b.Denominator);
+            long lcm = LCM(a.Denominator, b.Denominator);
+            return new Rational(lcm / a.Denominator * a.Numerator +
+                                lcm / b.Denominator * b.Numerator, lcm);
         }
 
         public static Rational operator -(Rational a, Rational b)
@@ -87,6 +71,23 @@ namespace RationalNumberProject
             return a;
         }
 
+        public static Rational operator *(Rational a, Rational b)
+        {
+            Rational r1 = new Rational(a.Numerator, b.Denominator);
+            Rational r2 = new Rational(b.Numerator, a.Denominator);
+            return new Rational(r1.Numerator * r2.Numerator, r1.Denominator * r2.Denominator);
+        }
+
+        public Rational Flip()
+        {
+            return new Rational(Denominator, Numerator);
+        }
+
+        public static Rational operator /(Rational a, Rational b)
+        {
+            return a * b.Flip();
+        }
+
         public static Rational Abs(Rational a)
         {
             return new Rational(Math.Abs(a.Numerator), a.Denominator);
@@ -94,30 +95,50 @@ namespace RationalNumberProject
 
         public static Rational Pow(Rational a, int n)
         {
-            Rational res = new Rational(1);
-            for (int i = 0; i < n; i++)
-            {
-                res *= a;
-            }
-            return res;
+            if (n < 0) return Pow(a.Flip(), -n);
+            if (n == 0) return 1;
+            if (n % 2 == 1) return Pow(a, n - 1) * a;
+            Rational t = Pow(a, n / 2);
+            return t * t;
+        }
+        
+
+        override public int GetHashCode()
+        {
+            return HashCode.Combine(Numerator, Denominator);
         }
 
-        public static Rational operator *(Rational a, Rational b)
+        public long IntPart()
         {
-            return new Rational(a.Numerator * b.Numerator,
-                                a.Denominator * b.Denominator);
+            return Numerator / Denominator;
         }
 
-        public static Rational operator /(Rational a, Rational b)
+        public Rational FractPart()
         {
-            if (b.Numerator == 0) throw new Exception("Division by zero");
-            return new Rational(a.Numerator * b.Denominator,
-                                a.Denominator * b.Numerator);
+            return new Rational(Numerator % Denominator, Denominator);
+        }
+
+        int CompareAbs(Rational a, Rational b)
+        {
+            long d1 = a.IntPart();
+            long d2 = b.IntPart();
+            int t = d1.CompareTo(d2);
+            if (t != 0) return t;
+            Rational r1 = a.FractPart();
+            if (r1 > 0) r1 = r1.Flip(); else return -1;
+            Rational r2 = b.FractPart();
+            if (r2 > 0) r2 = r2.Flip(); else return 1;
+            return CompareAbs(r2, r1);
+        }
+
+        public int Sign()
+        {
+            return Math.Sign(Numerator);
         }
 
         public bool Equals(Rational other)
         {
-            return this == other;
+            return Numerator == other.Numerator && Denominator == other.Denominator;
         }
 
         public override bool Equals(object obj)
@@ -125,53 +146,43 @@ namespace RationalNumberProject
             return obj is Rational && Equals((Rational)obj);
         }
 
-        override public int GetHashCode()
-        {
-            return HashCode.Combine(Numerator, Denominator);
-        }
-
         public int CompareTo(Rational other)
         {
-            if (this == other) return 0;
-            else if (this < other) return -1;
-            else return 1;
-        }
-
-        public int CompareTo(object obj)
-        {
-            if (obj == null) return 1;
-            if (obj is Rational) return CompareTo(obj as Rational);
-            else throw new ArgumentException("Must be Rational");
+            if (Equals(other)) return 0;
+            int t = Sign().CompareTo(other.Sign());
+            if (t != 0) return t;
+            if (Sign() == 1) return CompareAbs(Abs(this), Abs(other));
+            return CompareAbs(Abs(other), Abs(this));
         }
 
         public static bool operator ==(Rational a, Rational b)
         {
-            return a.Numerator == b.Numerator && a.Denominator == b.Denominator;
+            return Equals(a,b);
         }
 
         public static bool operator !=(Rational a, Rational b)
         {
-            return !(a == b);
+            return !Equals(a,b);
         }
 
         public static bool operator >(Rational a, Rational b)
         {
-            return a.Numerator * b.Denominator > a.Denominator * b.Numerator;
+            return a.CompareTo(b) == 1;
         }
 
         public static bool operator <(Rational a, Rational b)
         {
-            return a.Numerator * b.Denominator < a.Denominator * b.Numerator;
+            return a.CompareTo(b) == -1;
         }
 
         public static bool operator >=(Rational a, Rational b)
         {
-            return !(a < b);
+            return a.CompareTo(b) != -1;
         }
 
         public static bool operator <=(Rational a, Rational b)
         {
-            return !(a > b);
+            return a.CompareTo(b) != 1;
         }
 
         static public Rational Parse(string s)
@@ -269,8 +280,14 @@ namespace RationalNumberProject
             return ToString("S");
         }
 
+        public string ToString(string format, IFormatProvider provider)
+        {
+            return ToString(format);
+        }
+
         public string ToString(string format)
         {
+            if (format == null) format = "S";
             switch (format)
             {
                 case "s": 
@@ -285,18 +302,18 @@ namespace RationalNumberProject
                     return res;
                 case "I":
                     if (Numerator / Denominator == 0 || Numerator % Denominator == 0) return ToString("S");
-                    else return string.Concat(Numerator / Denominator, " ",
-                        Math.Abs(Numerator % Denominator), "/", Denominator);
+                    else return string.Concat(Numerator / Denominator, " ", Math.Abs(Numerator %
+                        Denominator), "/", Denominator);
                 case "d":
                     return ((decimal)Numerator / Denominator).ToString();
                 case "D":
-                    return FractionToString(Numerator, Denominator);
+                    return RationalToString(Numerator, Denominator);
                 default:
                     throw new FormatException("Unknown format");
             }
         }
 
-        private static string FractionToString(long numerator, long denominator)
+        private static string RationalToString(long numerator, long denominator)
         {
             Dictionary<long, int> d = new Dictionary<long, int>();
             string res = "";
