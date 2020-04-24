@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Numerics;
@@ -8,7 +8,7 @@ namespace RationalNumberProject
 {
     public class Rational : IComparable<Rational>, IFormattable
     {
-        public long Numerator { get; private set;  }
+        public long Numerator { get; private set; }
 
         public long Denominator { get; private set; }
 
