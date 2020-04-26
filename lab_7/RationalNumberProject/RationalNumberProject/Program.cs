@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Numerics;
 
 namespace RationalNumberProject
 {
@@ -11,9 +12,10 @@ namespace RationalNumberProject
             {
                 new Rational(6, 15),
                 new Rational(1, 10),
-                new Rational(-8, 3),
                 new Rational(9),
-                new Rational(1, 1),
+
+                (-8, 3),
+                (1, 1),
 
                 Rational.Parse("S", "1/2"),
                 Rational.Parse("S", "13"),

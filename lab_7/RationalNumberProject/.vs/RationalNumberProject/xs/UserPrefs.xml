@@ -1,15 +1,15 @@
 ﻿<Properties StartupConfiguration="{D6B3DA1F-C7B0-4669-8350-96E295D118ED}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="RationalNumberProject/Program.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="RationalNumberProject/Rational.cs">
     <Files>
-      <File FileName="RationalNumberProject/Program.cs" Line="9" Column="10" />
-      <File FileName="RationalNumberProject/Rational.cs" Line="93" Column="31" />
+      <File FileName="RationalNumberProject/Program.cs" Line="13" Column="37" />
+      <File FileName="RationalNumberProject/Rational.cs" Line="9" Column="76" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="RationalNumberProject" expanded="True">
             <Node name="RationalNumberProject" expanded="True">
-              <Node name="Program.cs" selected="True" />
+              <Node name="Rational.cs" selected="True" />
             </Node>
           </Node>
         </State>

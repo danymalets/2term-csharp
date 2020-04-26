@@ -6,7 +6,7 @@ using System.Text.RegularExpressions;
 
 namespace RationalNumberProject
 {
-    public class Rational : IComparable<Rational>, IFormattable
+    public class Rational : IComparable<Rational>, IFormattable, IEquatable<Rational>
     {
         public long Numerator { get; private set; }
 
@@ -88,6 +88,11 @@ namespace RationalNumberProject
             return a * b.Flip();
         }
 
+        public static Rational operator %(Rational a, Rational b)
+        {
+            return a - (a / b).IntPart() * b;
+        }
+
         public static Rational Abs(Rational a)
         {
             return new Rational(Math.Abs(a.Numerator), a.Denominator);
@@ -101,7 +106,6 @@ namespace RationalNumberProject
             Rational t = Pow(a, n / 2);
             return t * t;
         }
-        
 
         override public int GetHashCode()
         {
@@ -157,12 +161,12 @@ namespace RationalNumberProject
 
         public static bool operator ==(Rational a, Rational b)
         {
-            return Equals(a,b);
+            return Equals(a, b);
         }
 
         public static bool operator !=(Rational a, Rational b)
         {
-            return !Equals(a,b);
+            return !Equals(a, b);
         }
 
         public static bool operator >(Rational a, Rational b)
@@ -183,6 +187,28 @@ namespace RationalNumberProject
         public static bool operator <=(Rational a, Rational b)
         {
             return a.CompareTo(b) != 1;
+        }
+
+        public static Rational Min(Rational a, Rational b)
+        {
+            return a < b ? a : b;
+        }
+
+        public static Rational Max(Rational a, Rational b)
+        {
+            return a > b ? a : b;
+        }
+
+        public static long Ceiling(Rational a)
+        {
+            if (a.Denominator == 1) return a.IntPart();
+            return a.IntPart() + 1;
+        }
+
+        public static long Round(Rational a)
+        {
+            if (a.Numerator * 2 < a.Denominator) return a.IntPart();
+            return a.IntPart() + 1;
         }
 
         static public Rational Parse(string s)
@@ -290,7 +316,7 @@ namespace RationalNumberProject
             if (format == null) format = "S";
             switch (format)
             {
-                case "s": 
+                case "s":
                     return string.Concat(Numerator, "/", Denominator);
                 case "S":
                     if (Denominator == 1) return Numerator.ToString();
@@ -340,6 +366,11 @@ namespace RationalNumberProject
             return new Rational(value);
         }
 
+        public static implicit operator Rational((long,long) value)
+        {
+            return new Rational(value.Item1, value.Item2);
+        }
+
         public static implicit operator Rational(decimal value)
         {
             return new Rational((long)(value * (int)1e9), (int)1e9);
@@ -348,6 +379,16 @@ namespace RationalNumberProject
         public static explicit operator decimal(Rational value)
         {
             return (decimal)value.Numerator / value.Denominator;
+        }
+
+        public static explicit operator double(Rational value)
+        {
+            return (double)value.Numerator / value.Denominator;
+        }
+
+        public static explicit operator float(Rational value)
+        {
+            return (float)value.Numerator / value.Denominator;
         }
 
         public static explicit operator long(Rational value)
