@@ -6,7 +6,7 @@ namespace HumanProject
 {
     class Program
     {
-        readonly static List<Human> humans = new List<Human>();
+        static List<Human> humans = new List<Human>();
 
         static void Main(string[] args)
         {
@@ -308,7 +308,6 @@ namespace HumanProject
                     return null;
                 }
             }
-
             Console.WriteLine();
             return new Human(fullName, identifier, isMale, dateOfBirth, mother, father);
         }

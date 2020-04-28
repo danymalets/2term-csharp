@@ -14,12 +14,28 @@ namespace HumanProject
         public Human Father { get; private set; }
         public List<Human> Children = new List<Human>();
 
+        public Human()
+        {
+            FullName = "-";
+            Identifier = "-";
+            IsMale = true;
+            DateOfBirth = DateTime.Now;
+        }
+
+        public Human(string fullName, string identifier)
+        {
+            FullName = fullName;
+            Identifier = identifier;
+            IsMale = true;
+            DateOfBirth = DateTime.Now;
+        }
+
         public Human(string fullName, string identifier, bool isMale)
         {
             FullName = fullName;
             Identifier = identifier;
             IsMale = isMale;
-            DateOfBirth = DateTime.Now.AddYears(-18);
+            DateOfBirth = DateTime.Now;
         }
 
         public Human(string fullName, string identifier, bool isMale,
@@ -150,3 +166,4 @@ namespace HumanProject
         }
     }
 }
+
