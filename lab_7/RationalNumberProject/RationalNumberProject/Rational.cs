@@ -6,7 +6,7 @@ using System.Text.RegularExpressions;
 
 namespace RationalNumberProject
 {
-    public class Rational : IComparable<Rational>, IFormattable, IEquatable<Rational>
+    public class Rational : IEquatable<Rational>, IComparable<Rational>, IFormattable 
     {
         public long Numerator { get; private set; }
 
@@ -19,6 +19,26 @@ namespace RationalNumberProject
             Reduce();
         }
 
+        public Rational(long numerator)
+        {
+            Numerator = numerator;
+            Denominator = 1;
+        }
+
+        public Rational(double value)
+        {
+            Rational r = value;
+            Numerator = r.Numerator;
+            Denominator = r.Denominator;
+        }
+
+        public Rational(string s)
+        {
+            Rational r = Parse(s);
+            Numerator = r.Numerator;
+            Denominator = r.Denominator;
+        }
+
         void Reduce()
         {
             long gcd = Math.Abs(GCD(Numerator, Denominator)) * Math.Sign(Denominator);
@@ -29,12 +49,6 @@ namespace RationalNumberProject
         public static long GCD(long a, long b)
         {
             return b == 0 ? a : GCD(b, a % b);
-        }
-
-        public Rational(long numerator)
-        {
-            Numerator = numerator;
-            Denominator = 1;
         }
 
         public static long LCM(long a, long b)
@@ -213,22 +227,22 @@ namespace RationalNumberProject
 
         static public Rational Parse(string s)
         {
-            if (!TryParse(s, out Rational result)) throw new FormatException("Error parse");
+            if (!TryParse(s, out Rational result)) throw new Exception("Error parse");
             return result;
         }
 
         static public Rational Parse(string format, string s)
         {
-            if (!TryParse(s, format, out Rational result)) throw new FormatException("Error parse");
+            if (!TryParse(format, s, out Rational result)) throw new Exception("Error parse");
             return result;
         }
 
         static public bool TryParse(string s, out Rational result)
         {
-            return TryParse(s, "I", out result) || TryParse(s, "D", out result);
+            return TryParse("I", s, out result) || TryParse("D", s, out result);
         }
 
-        static public bool TryParse(string s, string format, out Rational result)
+        static public bool TryParse(string format, string s, out Rational result)
         {
             s = s.Trim();
             result = default;
@@ -247,7 +261,7 @@ namespace RationalNumberProject
                     }
                 case "S":
                     {
-                        if (!long.TryParse(s, out long value1)) return TryParse(s, "s", out result);
+                        if (!long.TryParse(s, out long value1)) return TryParse("s", s, out result);
                         result = new Rational(value1);
                         return true;
                     }
@@ -266,39 +280,76 @@ namespace RationalNumberProject
                     }
                 case "I":
                     {
-                        return TryParse(s, "S", out result) || TryParse(s, "i", out result);
+                        return TryParse("S", s, out result) || TryParse("i", s, out result);
                     }
                 case "d":
                     {
-                        if (!decimal.TryParse(s, out decimal value)) return false;
-                        result = value;
-                        return true;
+                        return StringToRationalSimple(s, out result);
                     }
                 case "D":
                     {
-                        if (Rational.TryParse(s, "d", out result)) return true;
-                        string pattern = @"^(-?)(\d+)[.](\d*)[(](\d+)[)]\z";
-                        if (!Regex.IsMatch(s, pattern)) return false;
-                        Match m = Regex.Match(s, pattern);
-                        bool isPositive = m.Groups[1].Value != "-";
-                        if (!long.TryParse(m.Groups[2].Value, out long intPart)) return false;
-                        string sa = m.Groups[3].Value + m.Groups[4].Value;
-                        string sb = m.Groups[3].Value;
-                        long a, b;
-                        if (!long.TryParse(sa, out a)) return false;
-                        if (sb == "") b = 0;
-                        else if (!long.TryParse(sb, out b)) return false;
-                        int n = sa.Length;
-                        int k = sa.Length - sb.Length;
-                        if (n > 18) return false;
-                        result = intPart + new Rational(a - b,
-                            long.Parse(new string('9', k) + new string('0', n - k)));
-                        if (!isPositive) result = -result;
-                        return true;
+                        return StringToRational(s, out result);
                     }
                 default:
-                    throw new FormatException(string.Concat("Unknown format"));
+                    throw new FormatException("Unknown format");
             }
+        }
+
+        static bool StringToRational(string s, out Rational result)
+        {
+            string pattern = @"^(-?)(\d+)[.](\d*)[(](\d+)[)]\z";
+            if (Regex.IsMatch(s, pattern))
+            {
+                if (StringToRationalPeriodic(s, out result)) return true;
+                s = s.Replace("(", "");
+                s = s.Replace(")", "");
+            }
+            return StringToRationalSimple(s, out result);
+        }
+
+        static bool StringToRationalSimple(string s, out Rational result)
+        {
+            result = default;
+            string pattern = @"^(-?)(\d+)([.](\d+))?\z";
+            if (!Regex.IsMatch(s, pattern)) return false;
+            Match m = Regex.Match(s, pattern);
+            bool isPositive = m.Groups[1].Value != "-";
+            if (!long.TryParse(m.Groups[2].Value, out long num)) return false;
+            string fracPart = m.Groups[4].Value;
+            int i = 0;
+            long den = 1;
+            while (i < fracPart.Length && den <= 1e17)
+            {
+                num *= 10;
+                num += fracPart[i] - '0';
+                den *= 10;
+                i++;
+            }
+            result = (num, den);
+            if (!isPositive) result = -result;
+            return true;
+        }
+
+        static bool StringToRationalPeriodic(string s, out Rational result)
+        {
+            result = default;
+            string pattern = @"^(-?)(\d+)[.](\d*)[(](\d+)[)]\z";
+            if (!Regex.IsMatch(s, pattern)) return false;
+            Match m = Regex.Match(s, pattern);
+            bool isPositive = m.Groups[1].Value != "-";
+            if (!long.TryParse(m.Groups[2].Value, out long intPart)) return false;
+            string sa = m.Groups[3].Value + m.Groups[4].Value;
+            string sb = m.Groups[3].Value;
+            long a, b;
+            if (!long.TryParse(sa, out a)) return false;
+            if (sb == "") b = 0;
+            else if (!long.TryParse(sb, out b)) return false;
+            int n = sa.Length;
+            int k = sa.Length - sb.Length;
+            if (n > 18) return false;
+            result = intPart + new Rational(a - b, long.Parse(new string('9', k) + new string('0', n - k)));
+            if (!isPositive) result = -result;
+            return true;
         }
 
         override public string ToString()
@@ -373,7 +424,29 @@ namespace RationalNumberProject
 
         public static implicit operator Rational(decimal value)
         {
-            return new Rational((long)(value * (int)1e9), (int)1e9);
+            return Parse("d", value.ToString());
+        }
+
+        public static implicit operator Rational(double value)
+        {
+            return Parse("d", value.ToString());
+        }
+
+        public static implicit operator Rational(float value)
+        {
+            return Parse("d", value.ToString());
+        }
+
+
+
+        public static explicit operator long(Rational value)
+        {
+            return value.Numerator / value.Denominator;
+        }
+
+        public static explicit operator (long, long)(Rational value)
+        {
+            return (value.Numerator, value.Denominator);
         }
 
         public static explicit operator decimal(Rational value)
@@ -389,11 +462,6 @@ namespace RationalNumberProject
         public static explicit operator float(Rational value)
         {
             return (float)value.Numerator / value.Denominator;
-        }
-
-        public static explicit operator long(Rational value)
-        {
-            return value.Numerator / value.Denominator;
         }
     }
 }

@@ -28,19 +28,18 @@ namespace RationalNumberProject
                 Rational.Parse("I", "-4 1/5"),
                 Rational.Parse("D", "12.34(56)"),
 
-                Rational.Parse("0.(7)"),
+                Rational.Parse("-0.(7)"),
                 Rational.Parse("0.125"),
                 Rational.Parse("-123/456"),
                 Rational.Parse("0.1212(123)"),
                 Rational.Parse("-1 2/3"),
 
-                3.3M,
+                -3.3M,
                 3,
                 1.23456789M,
-                15,
+                -15.0,
                 6,
             };
-
             while (true)
             {
                 Console.WriteLine("Enter:\n" +
@@ -167,11 +166,13 @@ namespace RationalNumberProject
                             if (!Rational.TryParse(Console.ReadLine(), out Rational a))
                             {
                                 Console.WriteLine("Error!");
+                                continue;
                             }
                             Console.WriteLine("Enter the second rational number in any format");
                             if (!Rational.TryParse(Console.ReadLine(), out Rational b))
                             {
                                 Console.WriteLine("Error!");
+                                continue;
                             }
                             Console.WriteLine();
                             if (b > 0)
@@ -198,11 +199,13 @@ namespace RationalNumberProject
                             if (!Rational.TryParse(Console.ReadLine(), out Rational a))
                             {
                                 Console.WriteLine("Error!");
+                                continue;
                             }
                             Console.WriteLine("Enter the second rational number in any format");
                             if (!Rational.TryParse(Console.ReadLine(), out Rational b))
                             {
                                 Console.WriteLine("Error!");
+                                continue;
                             }
                             Console.WriteLine();
                             if (a > b)
