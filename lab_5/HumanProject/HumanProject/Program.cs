@@ -10,11 +10,6 @@ namespace HumanProject
 
         static void Main(string[] args)
         {
-            Runner ra = new Runner();
-            long a = Convert.ToInt64(ra);
-            Console.WriteLine(a);
-
-            return;
             while (true)
             {
                 Console.WriteLine("Enter:\n" +
@@ -313,7 +308,6 @@ namespace HumanProject
                     return null;
                 }
             }
-
             Console.WriteLine();
             return new Human(fullName, identifier, isMale, dateOfBirth, mother, father);
         }

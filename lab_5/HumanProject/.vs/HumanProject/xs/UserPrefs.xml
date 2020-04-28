@@ -1,24 +1,17 @@
 ﻿<Properties StartupConfiguration="{CD2D98A7-DAC0-4BA9-87A0-B3AEA5BF8A11}|Default">
   <MonoDevelop.Ide.ItemProperties.HumanProject PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="HumanProject/Runner.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="HumanProject/Boxer.cs">
     <Files>
-      <File FileName="HumanProject/Program.cs" Line="14" Column="41" />
-      <File FileName="HumanProject/Human.cs" Line="28" Column="26" />
-      <File FileName="HumanProject/Sportsman.cs" Line="74" Column="64" />
-      <File FileName="HumanProject/IFighter.cs" />
-      <File FileName="HumanProject/Boxer.cs" Line="67" Column="10" />
-      <File FileName="HumanProject/Judoka.cs" Line="52" Column="10" />
-      <File FileName="HumanProject/ITeamPlayer.cs" Line="8" Column="35" />
-      <File FileName="HumanProject/SoccerPlayer.cs" Line="6" Column="6" />
-      <File FileName="HumanProject/HockeyPlayer.cs" Line="12" Column="1" />
-      <File FileName="HumanProject/Runner.cs" Line="54" Column="46" />
+      <File FileName="HumanProject/Boxer.cs" Line="58" Column="49" />
+      <File FileName="HumanProject/Runner.cs" Line="5" Column="36" />
+      <File FileName="HumanProject/HockeyPlayer.cs" Line="82" Column="10" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="HumanProject" expanded="True">
             <Node name="HumanProject" expanded="True">
-              <Node name="Runner.cs" selected="True" />
+              <Node name="Boxer.cs" selected="True" />
             </Node>
           </Node>
         </State>

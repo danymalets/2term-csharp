@@ -1,7 +1,8 @@
-﻿using System;
+using System;
+
 namespace HumanProject
 {
-    public class Boxer : Sportsman, IFighter<Boxer>, IComparable<Boxer>
+    public class Boxer : Sportsman
     {
         public double LeftHandStrength
         {
@@ -58,30 +59,18 @@ namespace HumanProject
             RightHandStrength = rightHandStrength;
         }
 
+        public override string ToString()
+        {
+            return string.Format("{0} id={1} l={2} r={3}",
+                FullName, Identifier, LeftHandStrength, RightHandStrength);
+        }
+
         public override void Train(int minutes)
         {
             Random random = new Random();
             LeftHandStrength += 0.01 * minutes * random.Next(1, 11);
             RightHandStrength += 0.01 * minutes * random.Next(1, 11);
             base.Train(minutes);
-        }
-
-        public double GetTotalStrength()
-        {
-            return LeftHandStrength + RightHandStrength;
-        }
-
-        public bool FightWith(Boxer opponent)
-        {
-            Random random = new Random();
-            int myChance = (int)(GetTotalStrength() * 100);
-            int opponentsChance = (int)(opponent.GetTotalStrength() * 100);
-            return random.Next(myChance + opponentsChance) < myChance;
-        }
-
-        public int CompareTo(Boxer other)
-        {
-            return GetTotalStrength().CompareTo(other.GetTotalStrength());
         }
     }
 }

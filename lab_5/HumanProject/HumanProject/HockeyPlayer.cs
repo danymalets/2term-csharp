@@ -1,12 +1,18 @@
 ﻿using System;
+
 namespace HumanProject
 {
     public enum HockeyPositions
     {
-
+        Goalkeeper,
+        LeftDefenseman,
+        RightDefenseman,
+        LeftWing,
+        Center,
+        RightWing
     }
 
-    public class HockeyPlayer : Sportsman, ITeamPlayer
+    public class HockeyPlayer : Sportsman
     {
         public HockeyPositions Position;
 
@@ -40,8 +46,6 @@ namespace HumanProject
         }
         double _strikePower;
 
-        string Team;
-
         public HockeyPlayer() : base()
         {
             Speed = 20;
@@ -55,22 +59,26 @@ namespace HumanProject
         }
 
         public HockeyPlayer(string fullName, string identifier, HockeyPositions position,
-            double speed, double strikePower, string team) : base(fullName, identifier)
+            double speed, double strikePower) : base(fullName, identifier)
         {
             Position = position;
             Speed = speed;
             StrikePower = strikePower;
-            Team = team;
         }
 
         public HockeyPlayer(string fullName, string identifier, HockeyPositions position,
-            double speed, double strikePower, string team, double weight, double height)
+            double speed, double strikePower, double weight, double height)
             : base(fullName, identifier, weight, height)
         {
             Position = position;
             Speed = speed;
             StrikePower = strikePower;
-            Team = team;
+        }
+
+        public override string ToString()
+        {
+            return string.Format("{0} id={1} pos={2} speed={3} s_p={4}",
+                FullName, Identifier, Position, Speed, StrikePower);
         }
 
         public override void Train(int minutes)
@@ -79,21 +87,6 @@ namespace HumanProject
             Speed += 0.001 * minutes * random.Next(1, 11);
             StrikePower += 0.01 * minutes * random.Next(1, 11);
             base.Train(minutes);
-        }
-
-        public void LeaveTeam()
-        {
-            Team = null;
-        }
-
-        public void EnterTeam(string team)
-        {
-            Team = team;
-        }
-
-        public string GetTeam()
-        {
-            return Team;
         }
     }
 }

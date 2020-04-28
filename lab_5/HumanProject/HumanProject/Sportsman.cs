@@ -1,4 +1,5 @@
 ﻿using System;
+
 namespace HumanProject
 {
     public enum SportsFood
@@ -83,6 +84,11 @@ namespace HumanProject
             Height = height;
         }
 
+        public override string ToString()
+        {
+            return string.Format("{0} id={1} w={2} h={3}", FullName, Identifier, Weight, Height);
+        }
+
         public void ChangeMenu(int mealNum, SportsFood food, SportsDrinks drink)
         {
             switch (mealNum)
@@ -146,18 +152,23 @@ namespace HumanProject
             {
                 case SportsDrinks.Water:
                     Weight += 0.1;
+                    Height += 0.0001;
                     break;
                 case SportsDrinks.Juice:
                     Weight += 0.2;
+                    Height += 0.0003;
                     break;
                 case SportsDrinks.Tea:
                     Weight += 0.1;
+                    Height += 0.0002;
                     break;
                 case SportsDrinks.CocaCola:
                     Weight += 0.5;
+                    Height += 0.0001;
                     break;
                 case SportsDrinks.SparklingWater:
                     Weight += 0.3;
+                    Height += 0.0003;
                     break;
                 default:
                     break;
@@ -168,7 +179,7 @@ namespace HumanProject
         {
             Random random = new Random();
             Weight -= 0.001 * minutes * random.Next(1, 11);
-            Height += 0.001 * minutes * random.Next(-1, 2);
+            Height += 0.0001 * minutes * random.Next(-1, 3);
         }
     }
 }

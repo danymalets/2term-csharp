@@ -18,6 +18,7 @@ namespace HumanProject
         {
             FullName = "-";
             Identifier = "-";
+            IsMale = true;
             DateOfBirth = DateTime.Now;
         }
 

@@ -5,4 +5,10 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="IFighter.cs" />
+    <Compile Remove="ITeamPlayer.cs" />
+    <Compile Remove="SoccerPlayer.cs" />
+    <Compile Remove="Judoka.cs" />
+  </ItemGroup>
 </Project>
