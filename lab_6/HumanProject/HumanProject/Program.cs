@@ -6,322 +6,236 @@ namespace HumanProject
 {
     class Program
     {
-        static List<Human> humans = new List<Human>();
+        static List<Runner> runners;
+
+        static List<Boxer> boxers;
 
         static void Main(string[] args)
         {
             while (true)
             {
                 Console.WriteLine("Enter:\n" +
-                                  "1. Show full list\n" +
-                                  "2. Add new Human (SIMPLE)\n" +
-                                  "3. Add new Human (FULL)\n" +
-                                  "4. Find human\n" +
-                                  "5. Remove human from list\n" +
-                                  "6. Sort by age\n" +
-                                  "7. Add parent-son relationship\n" +
-                                  "8. Arrange a marriage\n" +
-                                  "9. Make a divorce\n" +
-                                  "10. Exit\n");
-                int action;
-                while (!int.TryParse(Console.ReadLine(), out action) || action < 1 || action > 10)
+                                  "1. Open runners menu\n" +
+                                  "2. Open boxers menu\n" +
+                                  "3. Exit");
+                int action = ReadInt(3);
+                if (action == 1)
                 {
-                    Console.WriteLine("\nError! Try again\n");
-                }
-                Console.WriteLine();
-                string identifier;
-                Human human, parent, child, human1, human2;
-                switch (action)
-                {
-                    case 1:
-                        if (humans.Count == 0)
+                    runners = new List<Runner>()
+                    {
+                        new Runner("Usain Bolt", "0", 37),
+                        new Runner("Tyson Gay", "1", 36),
+                        new Runner("Yohan Blake", "2", 35),
+                        new Runner("Richard Tompson","3", 33),
+                        new Runner("Petya","4", 10)
+                    };
+                    while (true)
+                    {
+                        Console.WriteLine("List:");
+                        for (int i = 0; i < runners.Count; i++)
                         {
-                            Console.WriteLine("List is empty");
+                            Console.WriteLine(runners[i]);
                         }
-                        else
+                        Console.WriteLine("Enter:\n" +
+                                          "1. Add\n" +
+                                          "2. Remove\n" +
+                                          "3. Run a race\n" +
+                                          "4. Exit");
+                        action = ReadInt(4);
+                        if (action == 1)
                         {
-                            Console.WriteLine("Full list:");
-                            for (int i = 0; i < humans.Count; i++)
+                            Runner runner = ReadRunner();
+                            if (runner == null) continue;
+                            runners.Add(runner);
+                        }
+                        else if (action == 2)
+                        {
+                            Console.WriteLine("Enter identifier");
+                            string id = Console.ReadLine();
+                            int ind = FindRunner(id);
+                            if (ind != -1) runners.RemoveAt(ind);
+                        }
+                        else if (action == 3)
+                        {
+                            Console.WriteLine("Enter metres");
+                            int metres = ReadInt(1000 * 100);
+                            List<(int, string, string)> list = new List<(int, string, string)>();
+                            foreach (var runner in runners)
                             {
-                                Console.WriteLine();
-                                Console.Write(i + 1 + ". ");
-                                Console.WriteLine(humans[i]);
+                                list.Add((runner.Run(metres), runner.FullName, runner.Identifier));
                             }
+                            list.Sort();
+                            for (int i = 0; i < list.Count; i++)
+                            {
+                                Console.WriteLine(string.Format("{0}. {1} (id={2}) --- result = {3} ms",
+                                    i + 1, list[i].Item2, list[i].Item3, list[i].Item1));
+                            }
+                            if (list.Count != 0) Console.WriteLine("WINNER - " + list[0].Item2);
                         }
-                        break;
-                    case 2:
-                        human = ReadHuman(true);
-                        if (human == null)
-                        {
-                            Console.WriteLine("Error!");
-                        }
-                        else
-                        {
-                            Console.WriteLine("Successfully!");
-                            humans.Add(human);
-                        }
-                        break;
-                    case 3:
-                        human = ReadHuman(false);
-                        if (human == null)
-                        {
-                            Console.WriteLine("Error!");
-                        }
-                        else
-                        {
-                            Console.WriteLine("Successfully!");
-                            humans.Add(human);
-                        }
-                        break;
-                    case 4:
-                        Console.WriteLine("Enter identifier");
-                        identifier = Console.ReadLine();
-
-                        human = FindHuman(identifier);
-
-                        Console.WriteLine();
-                        if (human == null)
-                        {
-                            Console.WriteLine("Human not found!");
-                        }
-                        else
-                        {
-                            Console.WriteLine("Human found:");
-                            Console.WriteLine(human);
-                        }
-                        break;
-                    case 5:
-                        Console.WriteLine("Enter identifier");
-                        identifier = Console.ReadLine();
-
-                        human = FindHuman(identifier);
-
-                        Console.WriteLine();
-                        if (human == null)
-                        {
-                            Console.WriteLine("Human not found!");
-                        }
-                        else
-                        {
-                            human.Delete();
-                            humans.Remove(human);
-                            Console.WriteLine("Human successfully removed");
-                        }
-                        break;
-                    case 6:
-                        humans.Sort();
-                        Console.WriteLine("Successfully!");
-                        break;
-                    case 7:
-                        Console.WriteLine("Enter parent identifier");
-                        identifier = Console.ReadLine();
-                        parent = FindHuman(identifier);
-                        if (parent == null)
-                        {
-                            Console.WriteLine("Parent not found!");
-                            break;
-                        }
-
-                        Console.WriteLine("Enter child identifier");
-                        identifier = Console.ReadLine();
-                        child = FindHuman(identifier);
-                        if (child == null)
-                        {
-                            Console.WriteLine("Child not found!");
-                            break;
-                        }
-
-                        if (child.SetParent(parent))
-                        {
-                            Console.WriteLine("Successfully!");
-                        }
-                        else
-                        {
-                            if (parent.IsMale)
-                                Console.WriteLine("Error! This child already has a male parent");
-                            else
-                                Console.WriteLine("Error! This child already has a female parent");
-                        }
-                        break;
-                    case 8:
-                        Console.WriteLine("Enter first human identifier");
-                        identifier = Console.ReadLine();
-
-                        human1 = FindHuman(identifier);
-                        if (human1 == null)
-                        {
-                            Console.WriteLine("Human not found!");
-                            break;
-                        }
-                        else if (human1.Partner != null)
-                        {
-                            Console.WriteLine("This human already has a partner");
-                            break;
-                        }
-
-                        Console.WriteLine("Enter second human identifier");
-                        identifier = Console.ReadLine();
-                        human2 = FindHuman(identifier);
-                        if (human2 == null)
-                        {
-                            Console.WriteLine("Human not found!");
-                            break;
-                        }
-                        else if (human2.Partner != null)
-                        {
-                            Console.WriteLine("This human already has a partner");
-                            break;
-                        }
-
-                        if (Human.Marriage(human1, human2))
-                        {
-                            Console.WriteLine("Successfully!");
-                        }
-                        else
-                        {
-                            Console.WriteLine("Same-sex marriage is prohibited!");
-                        }
-                        break;
-                    case 9:
-                        Console.WriteLine("Enter the identifier of one of the partners");
-                        identifier = Console.ReadLine();
-                        human = FindHuman(identifier);
-                        if (human == null)
-                        {
-                            Console.WriteLine("Human not found!");
-                            break;
-                        }
-                        else if (human.Partner == null)
-                        {
-                            Console.WriteLine("This human has no partner");
-                            break;
-                        }
-                        human.Divorce();
-                        Console.WriteLine("Successfully!");
-                        break;
-                    case 10:
-                        return;
+                        else break;
+                    }
                 }
-                Console.WriteLine();
+                else if (action == 2)
+                {
+                    boxers = new List<Boxer>()
+                    {
+                        new Boxer("Floyd Mayweather", "0", 12000, 15000),
+                        new Boxer("Manny Pacquiao", "1", 1100, 1100),
+                        new Boxer("Archie Moore", "2", 790, 820),
+                        new Boxer("Ray Leonard", "3", 750, 750),
+                        new Boxer("Larry Holmes", "4", 300, 180)
+                    };
+                    while (true)
+                    {
+                        Console.WriteLine("List:");
+                        for (int i = 0; i < boxers.Count; i++)
+                        {
+                            Console.WriteLine(boxers[i]);
+                        }
+                        Console.WriteLine("Enter:\n" +
+                                          "1. Add\n" +
+                                          "2. Remove\n" +
+                                          "3. Organize a tournament\n" +
+                                          "4. Exit");
+                        action = ReadInt(4);
+                        if (action == 1)
+                        {
+                            Boxer boxer = ReadBoxer();
+                            if (boxer == null) continue;
+                            boxers.Add(boxer);
+                        }
+                        else if (action == 2)
+                        {
+                            Console.WriteLine("Enter identifier");
+                            string id = Console.ReadLine();
+                            int ind = FindBoxer(id);
+                            if (ind != -1) boxers.RemoveAt(ind);
+                        }
+                        else if (action == 3)
+                        {
+                            List<(int, string, string)> list = new List<(int, string, string)>();
+                            foreach (var boxer in boxers)
+                            {
+                                list.Add((0, boxer.FullName, boxer.Identifier));
+                            }
+                            for (int i = 0; i < boxers.Count - 1; i++)
+                            {
+                                for (int j = i + 1; j < boxers.Count; j++)
+                                {
+                                    if (boxers[i].FightWith(boxers[j]))
+                                        list[i] = (list[i].Item1 + 1, list[i].Item2, list[i].Item3);
+                                    else
+                                        list[j] = (list[j].Item1 + 1, list[j].Item2, list[j].Item3);
+                                }
+                            }
+                            list.Sort();
+                            list.Reverse();
+                            for (int i = 0; i < list.Count; i++)
+                            {
+                                Console.WriteLine(string.Format("{0}. {1} (id={2}) --- result = {3} wins",
+                                    i + 1, list[i].Item2, list[i].Item3, list[i].Item1));
+                            }
+                            if (list.Count != 0) Console.WriteLine("WINNER - " + list[0].Item2);
+                        }
+                        else break;
+                    }
+                }
+                else break;
             }
         }
 
-        static Human ReadHuman(bool isSimpleAdd)
+        static int FindRunner(string id)
+        {
+            for (int i = 0; i < runners.Count; i++)
+            {
+                if (runners[i].Identifier == id) return i;
+            }
+            return -1;
+        }
+
+        static Runner ReadRunner()
         {
             Console.WriteLine("Enter full name");
             string fullName = Console.ReadLine();
             if (fullName.Length == 0)
             {
-                Console.WriteLine("\nThe name must not be empty");
+                Console.WriteLine("The name must not be empty");
                 return null;
             }
-
             Console.WriteLine("Enter identifier");
             string identifier = Console.ReadLine();
             if (fullName.Length == 0)
             {
-                Console.WriteLine("\nThe identifier must not be empty");
+                Console.WriteLine("The identifier must not be empty");
                 return null;
             }
-            else if (FindHuman(identifier) != null)
+            else if (FindRunner(identifier) != -1)
             {
-                Console.WriteLine("\nThe identifier must be individual");
+                Console.WriteLine("The identifier must be individual");
                 return null;
             }
-
-            Console.WriteLine("Enter gender (M - male, F - female)");
-            string strGender = Console.ReadLine();
-            bool isMale;
-            if (strGender.ToUpper() == "M")
+            Console.WriteLine("Enter speed");
+            if (!double.TryParse(Console.ReadLine(), out double speed) || speed < 0)
             {
-                isMale = true;
-            }
-            else if (strGender.ToUpper() == "F")
-            {
-                isMale = false;
-            }
-            else
-            {
-                Console.WriteLine("\nWrong format");
+                Console.WriteLine("Error");
                 return null;
             }
-
-            if (isSimpleAdd)
-            {
-                return new Human(fullName, identifier, isMale);
-            }
-
-            Console.WriteLine("Enter date of birth (DD.MM.YYYY)");
-            string strDate = Console.ReadLine();
-            if (!DateTime.TryParseExact(strDate, "dd.MM.yyyy", new CultureInfo("en-US"),
-                DateTimeStyles.None, out DateTime dateOfBirth))
-            {
-                Console.WriteLine("\nWrong format");
-                return null;
-            }
-            else if (Human.GetAge(dateOfBirth) < 0)
-            {
-                Console.WriteLine("\nAge cannot be less than zero");
-                return null;
-            }
-
-            Console.WriteLine("Enter mother identifier or leave a blank line");
-            string motherIdentifier = Console.ReadLine();
-            Human mother;
-            if (motherIdentifier == "")
-            {
-                mother = null;
-            }
-            else
-            {
-                mother = FindHuman(motherIdentifier);
-                if (mother == null)
-                {
-                    Console.WriteLine("\nMother not found");
-                    return null;
-                }
-                else if (mother.IsMale)
-                {
-                    Console.WriteLine("\nThis human is a male");
-                    return null;
-                }
-            }
-
-            Console.WriteLine("Enter father identifier or leave a blank line");
-            string fatherIdentifier = Console.ReadLine();
-            Human father;
-            if (fatherIdentifier == "")
-            {
-                father = null;
-            }
-            else
-            {
-                father = FindHuman(fatherIdentifier);
-                if (father == null)
-                {
-                    Console.WriteLine("\nFather not found");
-                    return null;
-                }
-                else if (!father.IsMale)
-                {
-                    Console.WriteLine("\nThis human is a female");
-                    return null;
-                }
-            }
-            Console.WriteLine();
-            return new Human(fullName, identifier, isMale, dateOfBirth, mother, father);
+            return new Runner(fullName, identifier, speed);
         }
 
-        static Human FindHuman(string identifier)
+        static int FindBoxer(string id)
         {
-            for (int i = 0; i < humans.Count; i++)
+            for (int i = 0; i < boxers.Count; i++)
             {
-                if (humans[i].Identifier == identifier)
-                {
-                    return humans[i];
-                }
+                if (boxers[i].Identifier == id) return i;
             }
-            return null;
+            return -1;
+        }
+
+        static Boxer ReadBoxer()
+        {
+            Console.WriteLine("Enter full name");
+            string fullName = Console.ReadLine();
+            if (fullName.Length == 0)
+            {
+                Console.WriteLine("The name must not be empty");
+                return null;
+            }
+            Console.WriteLine("Enter identifier");
+            string identifier = Console.ReadLine();
+            if (fullName.Length == 0)
+            {
+                Console.WriteLine("The identifier must not be empty");
+                return null;
+            }
+            else if (FindBoxer(identifier) != -1)
+            {
+                Console.WriteLine("The identifier must be individual");
+                return null;
+            }
+            Console.WriteLine("Enter left hand strength");
+            if (!double.TryParse(Console.ReadLine(), out double lhs) || lhs < 0)
+            {
+                Console.WriteLine("Error");
+                return null;
+            }
+            Console.WriteLine("Enter right hand strength");
+            if (!double.TryParse(Console.ReadLine(), out double rhs) || rhs < 0)
+            {
+                Console.WriteLine("Error");
+                return null;
+            }
+            return new Boxer(fullName, identifier, lhs, rhs);
+        }
+
+        static int ReadInt(int n)
+        {
+            int action;
+            while (!int.TryParse(Console.ReadLine(), out action) || action < 1 || action > n)
+            {
+                Console.WriteLine("Error! Try again");
+            }
+            return action;
         }
     }
 }

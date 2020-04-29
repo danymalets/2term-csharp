@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/danielmalec/Desktop/csharp-2term/lab_5/HumanProject/HumanProject/HumanProject.csproj": {}
+    "/Users/danielmalec/Desktop/csharp-2term/lab_6/HumanProject/HumanProject/HumanProject.csproj": {}
   },
   "projects": {
-    "/Users/danielmalec/Desktop/csharp-2term/lab_5/HumanProject/HumanProject/HumanProject.csproj": {
+    "/Users/danielmalec/Desktop/csharp-2term/lab_6/HumanProject/HumanProject/HumanProject.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/danielmalec/Desktop/csharp-2term/lab_5/HumanProject/HumanProject/HumanProject.csproj",
+        "projectUniqueName": "/Users/danielmalec/Desktop/csharp-2term/lab_6/HumanProject/HumanProject/HumanProject.csproj",
         "projectName": "HumanProject",
-        "projectPath": "/Users/danielmalec/Desktop/csharp-2term/lab_5/HumanProject/HumanProject/HumanProject.csproj",
+        "projectPath": "/Users/danielmalec/Desktop/csharp-2term/lab_6/HumanProject/HumanProject/HumanProject.csproj",
         "packagesPath": "/Users/danielmalec/.nuget/packages/",
-        "outputPath": "/Users/danielmalec/Desktop/csharp-2term/lab_5/HumanProject/HumanProject/obj/",
+        "outputPath": "/Users/danielmalec/Desktop/csharp-2term/lab_6/HumanProject/HumanProject/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/danielmalec/.config/NuGet/NuGet.Config"

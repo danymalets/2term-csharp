@@ -69,14 +69,21 @@ namespace HumanProject
             Team = team;
         }
 
-        public HockeyPlayer(string fullName, string identifier, HockeyPositions position,
-            double speed, double strikePower, string team, double weight, double height)
+        public HockeyPlayer(string fullName, string identifier, double weight, double height,
+            double speed, double strikePower)
+            : base(fullName, identifier, weight, height)
+        {
+            Speed = speed;
+            StrikePower = strikePower;
+        }
+
+        public HockeyPlayer(string fullName, string identifier, double weight, double height,
+            HockeyPositions position, double speed, double strikePower)
             : base(fullName, identifier, weight, height)
         {
             Position = position;
             Speed = speed;
             StrikePower = strikePower;
-            Team = team;
         }
 
         public override string ToString()

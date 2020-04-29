@@ -1,9 +1,10 @@
 ﻿using System;
+
 namespace HumanProject
 {
     public enum SportsFood
     {
-        Eggs,
+        Eggs = 1,
         CottageCheese,
         Buckwheat,
         Beef,
@@ -13,7 +14,7 @@ namespace HumanProject
 
     public enum SportsDrinks
     {
-        Water,
+        Water = 1,
         Juice,
         Tea,
         CocaCola,
@@ -41,8 +42,8 @@ namespace HumanProject
             }
             set
             {
-                if (value < 50) _weight = 50;
-                else if (value > 130) _weight = 130;
+                if (value < 0) _weight = 0;
+                else if (value > 150) _weight = 150;
                 else _weight = value;
             }
         }
@@ -56,14 +57,31 @@ namespace HumanProject
             }
             set
             {
-                if (value < 150) _height = 150;
-                else if (value > 210) _height = 210;
+                if (value < 0) _height = 0;
+                else if (value > 250) _height = 250;
                 else _height = value;
             }
         }
         double _height;
 
-        SportsMenu menu;
+        public SportsMenu Menu = new SportsMenu()
+        {
+            Breakfast = new SportsMeal()
+            {
+                Food = SportsFood.Eggs,
+                Drink = SportsDrinks.Water
+            },
+            Lunch = new SportsMeal()
+            {
+                Food = SportsFood.Beef,
+                Drink = SportsDrinks.Tea
+            },
+            Dinner = new SportsMeal()
+            {
+                Food = SportsFood.Fruits,
+                Drink = SportsDrinks.Juice
+            }
+        };
 
         public Sportsman() : base()
         {
@@ -92,9 +110,9 @@ namespace HumanProject
         {
             switch (mealNum)
             {
-                case 1: ChangeMenu(menu.Breakfast, food, drink); return;
-                case 2: ChangeMenu(menu.Lunch, food, drink); return;
-                case 3: ChangeMenu(menu.Dinner, food, drink); return;
+                case 1: ChangeMenu(Menu.Breakfast, food, drink); return;
+                case 2: ChangeMenu(Menu.Lunch, food, drink); return;
+                case 3: ChangeMenu(Menu.Dinner, food, drink); return;
                 default: throw new Exception("Wrong meal number");
             }
         }
@@ -105,18 +123,18 @@ namespace HumanProject
             meal.Drink = drink;
         }
 
-        public void TakeMeal(int mealNum)
+        public void HaveMeal(int mealNum)
         {
             switch (mealNum)
             {
-                case 1: TakeMeal(menu.Breakfast); return;
-                case 2: TakeMeal(menu.Lunch); return;
-                case 3: TakeMeal(menu.Dinner); return;
+                case 1: HaveMeal(Menu.Breakfast); return;
+                case 2: HaveMeal(Menu.Lunch); return;
+                case 3: HaveMeal(Menu.Dinner); return;
                 default: throw new Exception("Wrong meal number");
             }
         }
 
-        public void TakeMeal(SportsMeal meal)
+        public void HaveMeal(SportsMeal meal)
         {
             switch (meal.Food)
             {

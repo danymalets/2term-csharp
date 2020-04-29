@@ -91,9 +91,9 @@ namespace HumanProject
         }
 
         public Judoka(string fullName, string identifier,
+            double weight, double height,
             double leftHandStrength, double rightHandStrength,
-            double leftFootStrength, double rightFootStrength,
-            double weight, double height)
+            double leftFootStrength, double rightFootStrength)
             : base(fullName, identifier, weight, height)
         {
             LeftHandStrength = leftHandStrength;

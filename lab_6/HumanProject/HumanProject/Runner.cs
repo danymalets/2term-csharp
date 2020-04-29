@@ -36,7 +36,7 @@ namespace HumanProject
         }
 
         public Runner(string fullName, string identifier,
-            double speed, double weight, double height)
+            double weight, double height, double speed)
             : base(fullName, identifier, weight, height)
         {
             Speed = speed;

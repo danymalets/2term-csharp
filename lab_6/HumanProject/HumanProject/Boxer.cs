@@ -52,8 +52,9 @@ namespace HumanProject
         }
 
         public Boxer(string fullName, string identifier,
-            double leftHandStrength, double rightHandStrength,
-            double weight, double height) : base(fullName, identifier, weight, height)
+            double weight, double height,
+            double leftHandStrength, double rightHandStrength)
+            : base(fullName, identifier, weight, height)
         {
             LeftHandStrength = leftHandStrength;
             RightHandStrength = rightHandStrength;
@@ -81,8 +82,8 @@ namespace HumanProject
         public bool FightWith(Boxer opponent)
         {
             Random random = new Random();
-            int myChance = (int)(GetTotalStrength() * 100);
-            int opponentsChance = (int)(opponent.GetTotalStrength() * 100);
+            int myChance = (int)GetTotalStrength();
+            int opponentsChance = (int)opponent.GetTotalStrength();
             return random.Next(myChance + opponentsChance) < myChance;
         }
 

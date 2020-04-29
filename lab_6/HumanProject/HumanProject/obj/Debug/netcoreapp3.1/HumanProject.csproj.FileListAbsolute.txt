@@ -22,3 +22,15 @@
 /Users/danielmalec/Desktop/csharp-2term/lab_5/HumanProject/HumanProject/bin/Debug/netcoreapp3.1/HumanProject.dll
 /Users/danielmalec/Desktop/csharp-2term/lab_5/HumanProject/HumanProject/bin/Debug/netcoreapp3.1/HumanProject.pdb
 /Users/danielmalec/Desktop/csharp-2term/lab_5/HumanProject/HumanProject/obj/Debug/netcoreapp3.1/HumanProject.genruntimeconfig.cache
+/Users/danielmalec/Desktop/csharp-2term/lab_6/HumanProject/HumanProject/bin/Debug/netcoreapp3.1/HumanProject.deps.json
+/Users/danielmalec/Desktop/csharp-2term/lab_6/HumanProject/HumanProject/bin/Debug/netcoreapp3.1/HumanProject.runtimeconfig.json
+/Users/danielmalec/Desktop/csharp-2term/lab_6/HumanProject/HumanProject/bin/Debug/netcoreapp3.1/HumanProject.runtimeconfig.dev.json
+/Users/danielmalec/Desktop/csharp-2term/lab_6/HumanProject/HumanProject/bin/Debug/netcoreapp3.1/HumanProject.dll
+/Users/danielmalec/Desktop/csharp-2term/lab_6/HumanProject/HumanProject/bin/Debug/netcoreapp3.1/HumanProject.pdb
+/Users/danielmalec/Desktop/csharp-2term/lab_6/HumanProject/HumanProject/obj/Debug/netcoreapp3.1/HumanProject.csprojAssemblyReference.cache
+/Users/danielmalec/Desktop/csharp-2term/lab_6/HumanProject/HumanProject/obj/Debug/netcoreapp3.1/HumanProject.csproj.CoreCompileInputs.cache
+/Users/danielmalec/Desktop/csharp-2term/lab_6/HumanProject/HumanProject/obj/Debug/netcoreapp3.1/HumanProject.AssemblyInfoInputs.cache
+/Users/danielmalec/Desktop/csharp-2term/lab_6/HumanProject/HumanProject/obj/Debug/netcoreapp3.1/HumanProject.AssemblyInfo.cs
+/Users/danielmalec/Desktop/csharp-2term/lab_6/HumanProject/HumanProject/obj/Debug/netcoreapp3.1/HumanProject.dll
+/Users/danielmalec/Desktop/csharp-2term/lab_6/HumanProject/HumanProject/obj/Debug/netcoreapp3.1/HumanProject.pdb
+/Users/danielmalec/Desktop/csharp-2term/lab_6/HumanProject/HumanProject/obj/Debug/netcoreapp3.1/HumanProject.genruntimeconfig.cache
