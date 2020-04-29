@@ -66,8 +66,16 @@ namespace HumanProject
             StrikePower = strikePower;
         }
 
-        public HockeyPlayer(string fullName, string identifier, HockeyPositions position,
-            double speed, double strikePower, double weight, double height)
+        public HockeyPlayer(string fullName, string identifier, double weight, double height,
+            double speed, double strikePower)
+            : base(fullName, identifier, weight, height)
+        {
+            Speed = speed;
+            StrikePower = strikePower;
+        }
+
+        public HockeyPlayer(string fullName, string identifier, double weight, double height,
+            HockeyPositions position, double speed, double strikePower)
             : base(fullName, identifier, weight, height)
         {
             Position = position;
@@ -77,8 +85,8 @@ namespace HumanProject
 
         public override string ToString()
         {
-            return string.Format("{0} id={1} pos={2} speed={3} s_p={4}",
-                FullName, Identifier, Position, Speed, StrikePower);
+            return string.Format("{0} id={1} w={2} h={3} pos={4} speed={5} s_p={6}",
+                FullName, Identifier, Weight, Height, Position, Speed, StrikePower);
         }
 
         public override void Train(int minutes)

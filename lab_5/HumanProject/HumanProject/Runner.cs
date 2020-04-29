@@ -13,8 +13,8 @@ namespace HumanProject
             }
             private set
             {
-                if (value > 40) _speed = 40;
-                else if (value < 0) _speed = 0;
+                if (value < 0) _speed = 0;
+                else if (value > 50) _speed = 50;
                 else _speed = value;
             }
         }
@@ -36,7 +36,7 @@ namespace HumanProject
         }
 
         public Runner(string fullName, string identifier,
-            double speed, double weight, double height)
+            double weight, double height, double speed)
             : base(fullName, identifier, weight, height)
         {
             Speed = speed;
@@ -44,7 +44,7 @@ namespace HumanProject
 
         public override string ToString()
         {
-            return string.Format("{0} id={1} speed={2}", FullName, Identifier, Speed);
+            return string.Format("{0} id={1} w={2} h={3} speed={4}", FullName, Identifier, Weight, Height, Speed);
         }
 
         public int Run(int metres)

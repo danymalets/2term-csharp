@@ -3,11 +3,17 @@ using System.Collections.Generic;
 
 namespace HumanProject
 {
+    public enum Genders
+    {
+        Male,
+        Female
+    }
+
     public class Human : IComparable<Human>
     {
         public string FullName { get; private set; }
         public string Identifier { get; private set; }
-        public bool IsMale { get; private set; }
+        public Genders Gender { get; private set; }
         public DateTime DateOfBirth { get; private set; }
         public Human Partner { get; private set; }
         public Human Mother { get; private set; }
@@ -18,7 +24,7 @@ namespace HumanProject
         {
             FullName = "-";
             Identifier = "-";
-            IsMale = true;
+            Gender = Genders.Male;
             DateOfBirth = DateTime.Now;
         }
 
@@ -26,7 +32,7 @@ namespace HumanProject
         {
             FullName = fullName;
             Identifier = identifier;
-            IsMale = true;
+            Gender = Genders.Male;
             DateOfBirth = DateTime.Now;
         }
 
@@ -34,7 +40,7 @@ namespace HumanProject
         {
             FullName = fullName;
             Identifier = identifier;
-            IsMale = isMale;
+            Gender = Genders.Male;
             DateOfBirth = DateTime.Now;
         }
 
@@ -43,7 +49,7 @@ namespace HumanProject
         {
             FullName = fullName;
             Identifier = identifier;
-            IsMale = isMale;
+            Gender = Genders.Male;
             DateOfBirth = dateOfBirth;
             Mother = mother;
             Father = father;
@@ -63,7 +69,7 @@ namespace HumanProject
 
         public bool SetParent(Human parent)
         {
-            if (parent.IsMale)
+            if (parent.Gender == Genders.Male)
             {
                 if (Father != null) return false;
                 Father = parent;
@@ -82,13 +88,9 @@ namespace HumanProject
             string res = "";
             int age = GetAge(DateOfBirth);
             res += $"{FullName}, id = {Identifier}, {age}";
-            if (age == 1) res += " year, ";
-            else res += " years, ";
-
-            if (IsMale) res += "Male\n";
-            else res += "Female\n";
-
-            if (IsMale)
+            if (age == 1) res += " year, "; else res += " years, ";
+            if (Gender == Genders.Male) res += "Male\n"; else res += "Female\n";
+            if (Gender == Genders.Male)
             {
                 if (Partner == null) res += "no wife";
                 else res += $"Wife - {Partner.FullName} [id={Partner.Identifier}] ";
@@ -99,18 +101,11 @@ namespace HumanProject
                 else res += $"Husband - {Partner.FullName} [id={Partner.Identifier}] ";
             }
             res += ", ";
-
-            if (Mother == null) res += "no mother";
-            else res += $"Mother - {Mother.FullName} [id={Mother.Identifier}]";
-
+            if (Mother == null) res += "no mother"; else res += $"Mother - {Mother.FullName} [id={Mother.Identifier}]";
             res += ", ";
-
-            if (Father == null) res += "no father";
-            else res += $"Father - {Father.FullName} [id={Father.Identifier}]";
+            if (Father == null) res += "no father"; else res += $"Father - {Father.FullName} [id={Father.Identifier}]";
             res += "\n";
-
-            if (Children.Count == 0) res += "no children";
-            else res += "Children list:\n";
+            if (Children.Count == 0) res += "no children"; else res += "Children list:\n";
             for (int i = 0; i < Children.Count; i++)
             {
                 res += $"{i + 1}) {Children[i].FullName} [id={Children[i].Identifier}]\n";
@@ -125,7 +120,7 @@ namespace HumanProject
 
         public static bool Marriage(Human human1, Human human2)
         {
-            if (human1.IsMale == human2.IsMale) return false;
+            if (human1.Gender == human2.Gender) return false;
             human1.Partner = human2;
             human2.Partner = human1;
             return true;
@@ -149,7 +144,7 @@ namespace HumanProject
             if (Partner != null) Partner.Partner = null;
             if (Mother != null) Mother.RemoveChild(this);
             if (Father != null) Father.RemoveChild(this);
-            if (IsMale)
+            if (Gender == Genders.Male)
             {
                 foreach (var child in Children)
                 {

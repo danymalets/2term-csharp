@@ -51,9 +51,8 @@ namespace HumanProject
             RightHandStrength = rightHandStrength;
         }
 
-        public Boxer(string fullName, string identifier,
-            double leftHandStrength, double rightHandStrength,
-            double weight, double height) : base(fullName, identifier, weight, height)
+        public Boxer(string fullName, string identifier, double weight, double height,
+            double leftHandStrength, double rightHandStrength) : base(fullName, identifier, weight, height)
         {
             LeftHandStrength = leftHandStrength;
             RightHandStrength = rightHandStrength;
@@ -61,8 +60,8 @@ namespace HumanProject
 
         public override string ToString()
         {
-            return string.Format("{0} id={1} l={2} r={3}",
-                FullName, Identifier, LeftHandStrength, RightHandStrength);
+            return string.Format("{0} id={1} w={2} h={3} l={4} r={5}",
+                FullName, Identifier, Weight, Height, LeftHandStrength, RightHandStrength);
         }
 
         public override void Train(int minutes)
