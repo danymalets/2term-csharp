@@ -137,7 +137,7 @@ namespace HumanProject
                         }
                         else
                         {
-                            if (parent.IsMale)
+                            if (parent.Gender == Genders.Male)
                                 Console.WriteLine("Error! This child already has a male parent");
                             else
                                 Console.WriteLine("Error! This child already has a female parent");
@@ -280,7 +280,7 @@ namespace HumanProject
                     Console.WriteLine("\nMother not found");
                     return null;
                 }
-                else if (mother.IsMale)
+                else if (mother.Gender == Genders.Male)
                 {
                     Console.WriteLine("\nThis human is a male");
                     return null;
@@ -302,7 +302,7 @@ namespace HumanProject
                     Console.WriteLine("\nFather not found");
                     return null;
                 }
-                else if (!father.IsMale)
+                else if (father.Gender == Genders.Female)
                 {
                     Console.WriteLine("\nThis human is a female");
                     return null;

@@ -2,8 +2,8 @@
   <MonoDevelop.Ide.ItemProperties.HumanProject PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.Workbench ActiveDocument="HumanProject/Human.cs">
     <Files>
-      <File FileName="HumanProject/Program.cs" Line="156" Column="41" />
-      <File FileName="HumanProject/Human.cs" Line="26" Column="10" />
+      <File FileName="HumanProject/Program.cs" Line="283" Column="55" />
+      <File FileName="HumanProject/Human.cs" Line="16" Column="33" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -13,11 +13,6 @@
               <Node name="Human.cs" selected="True" />
             </Node>
           </Node>
-        </State>
-      </Pad>
-      <Pad Id="ClassPad">
-        <State name="__root__">
-          <Node name="HumanProject" expanded="True" selected="True" />
         </State>
       </Pad>
     </Pads>
