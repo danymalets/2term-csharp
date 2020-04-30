@@ -60,7 +60,7 @@ namespace HumanProject
 
         public override string ToString()
         {
-            return string.Format("{0} id={1} w={2} h={3} l={4} r={5}",
+            return string.Format("{0}, id={1}, weight={2}, height={3}, left hand strength={4}, right hand strength={5}",
                 FullName, Identifier, Weight, Height, LeftHandStrength, RightHandStrength);
         }
 

@@ -85,7 +85,7 @@ namespace HumanProject
 
         public override string ToString()
         {
-            return string.Format("{0} id={1} w={2} h={3} pos={4} speed={5} s_p={6}",
+            return string.Format("{0}, id={1}, weight={2}, height={3}, position={4}, speed={5}, strike power={6}",
                 FullName, Identifier, Weight, Height, Position, Speed, StrikePower);
         }
 

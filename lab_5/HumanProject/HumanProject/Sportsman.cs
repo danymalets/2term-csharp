@@ -103,7 +103,7 @@ namespace HumanProject
 
         public override string ToString()
         {
-            return string.Format("{0} id={1} w={2} h={3}", FullName, Identifier, Weight, Height);
+            return string.Format("{0}, id={1}, weight={2}, height={3}", FullName, Identifier, Weight, Height);
         }
 
         public void ChangeMenu(int mealNum, SportsFood food, SportsDrinks drink)

@@ -44,7 +44,7 @@ namespace HumanProject
 
         public override string ToString()
         {
-            return string.Format("{0} id={1} w={2} h={3} speed={4}", FullName, Identifier, Weight, Height, Speed);
+            return string.Format("{0}, id={1}, weight={2}, height={3}, speed={4}", FullName, Identifier, Weight, Height, Speed);
         }
 
         public int Run(int metres)
