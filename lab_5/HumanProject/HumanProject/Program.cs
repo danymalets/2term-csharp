@@ -22,7 +22,7 @@ namespace HumanProject
                                   "4. Train\n" +
                                   "5. Show menu\n" +
                                   "6. Exit");
-                int action = ReadInt(5);
+                int action = ReadInt(6);
                 if (action == 1)
                 {
                     Console.WriteLine("Enter:\n" +
@@ -80,7 +80,7 @@ namespace HumanProject
                                       "4. CocaCola\n" +
                                       "5. SparklingWate\n" +
                                       "6. Exit");
-                    int drink = ReadInt(7);
+                    int drink = ReadInt(6);
                     if (drink == 6) continue;
                     sportsman.ChangeMenu(num, (SportsFood)food, (SportsDrinks)drink);
                 }
