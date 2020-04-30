@@ -112,7 +112,7 @@ namespace HumanProject
                                       sportsman.Menu.Dinner.Food, sportsman.Menu.Dinner.Drink));
                     Console.WriteLine();
                 }
-                else continue;
+                else break;
             }
         }
 
