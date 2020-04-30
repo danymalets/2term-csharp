@@ -78,7 +78,7 @@ namespace HumanProject
                                       "2. Juice\n" +
                                       "3. Tea\n" +
                                       "4. CocaCola\n" +
-                                      "5. SparklingWate\n" +
+                                      "5. SparklingWater\n" +
                                       "6. Exit");
                     int drink = ReadInt(6);
                     if (drink == 6) continue;
