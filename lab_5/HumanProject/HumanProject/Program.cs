@@ -8,8 +8,8 @@ namespace HumanProject
     {
         static void Main(string[] args)
         {
-            Sportsman sportsman = new Boxer("Khabib Nurmagomedov", "kn",
-                                            70, 178, 900, 900);
+            Sportsman sportsman = new Boxer("Mike Tyson", "0",
+                                            70, 178, 1500, 1500);
             while (true)
             {
                 string s = sportsman.GetType().ToString();

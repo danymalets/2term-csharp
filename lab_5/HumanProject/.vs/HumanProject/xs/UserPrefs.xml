@@ -2,7 +2,7 @@
   <MonoDevelop.Ide.ItemProperties.HumanProject PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.Workbench ActiveDocument="HumanProject/Program.cs">
     <Files>
-      <File FileName="HumanProject/Program.cs" Line="72" Column="16" />
+      <File FileName="HumanProject/Program.cs" Line="12" Column="64" />
       <File FileName="HumanProject/Sportsman.cs" />
       <File FileName="HumanProject/Boxer.cs" />
       <File FileName="HumanProject/Runner.cs" />
