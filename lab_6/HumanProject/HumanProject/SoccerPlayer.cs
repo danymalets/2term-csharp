@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 namespace HumanProject
 {
     public enum SoccerPositions
@@ -92,8 +92,8 @@ namespace HumanProject
 
         public override string ToString()
         {
-            return string.Format("{0} id={1} pos={2} speed={3} s_p={4} team={5}",
-                FullName, Identifier, Position, Speed, StrikePower, Team);
+            return string.Format("{0}, id={1}, position={2}, speed={3}, strike power={4}, team={5}",
+                FullName, Identifier, Position, Speed, StrikePower, Team ?? "no team");
         }
 
         public override void Train(int minutes)

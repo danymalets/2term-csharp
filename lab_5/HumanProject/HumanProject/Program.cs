@@ -18,7 +18,7 @@ namespace HumanProject
                 Console.WriteLine("Enter:\n" +
                                   "1. Change current sportsman\n" +
                                   "2. Change menu\n" +
-                                  "3. Take a meal\n" +
+                                  "3. Have a meal\n" +
                                   "4. Train\n" +
                                   "5. Show menu\n" +
                                   "6. Exit");

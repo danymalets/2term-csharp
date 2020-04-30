@@ -103,21 +103,21 @@ namespace HumanProject
 
         public override string ToString()
         {
-            return string.Format("{0} id={1} w={2} h={3}", FullName, Identifier, Weight, Height);
+            return string.Format("{0}, id={1}, weight={2}, height={3}", FullName, Identifier, Weight, Height);
         }
 
         public void ChangeMenu(int mealNum, SportsFood food, SportsDrinks drink)
         {
             switch (mealNum)
             {
-                case 1: ChangeMenu(Menu.Breakfast, food, drink); return;
-                case 2: ChangeMenu(Menu.Lunch, food, drink); return;
-                case 3: ChangeMenu(Menu.Dinner, food, drink); return;
+                case 1: ChangeMenu(ref Menu.Breakfast, food, drink); return;
+                case 2: ChangeMenu(ref Menu.Lunch, food, drink); return;
+                case 3: ChangeMenu(ref Menu.Dinner, food, drink); return;
                 default: throw new Exception("Wrong meal number");
             }
         }
 
-        void ChangeMenu(SportsMeal meal, SportsFood food, SportsDrinks drink)
+        void ChangeMenu(ref SportsMeal meal, SportsFood food, SportsDrinks drink)
         {
             meal.Food = food;
             meal.Drink = drink;

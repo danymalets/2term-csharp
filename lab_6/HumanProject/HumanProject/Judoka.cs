@@ -104,8 +104,9 @@ namespace HumanProject
 
         public override string ToString()
         {
-            return string.Format("{0} id={1} lh={2} rh={3} lf={4} rf={5}", FullName, Identifier,
-                LeftHandStrength, RightHandStrength, LeftFootStrength, RightFootStrength);
+            return string.Format("{0}, id={1}, left hand strehgth={2}, right hand strength={3}, " +
+                "left foot strehgth={4}, right foot strength={5}",
+                FullName, Identifier, LeftFootStrength, RightFootStrength);
         }
 
         public override void Train(int minutes)
