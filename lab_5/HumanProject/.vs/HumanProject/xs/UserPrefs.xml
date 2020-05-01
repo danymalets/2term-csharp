@@ -1,12 +1,11 @@
 ﻿<Properties StartupConfiguration="{CD2D98A7-DAC0-4BA9-87A0-B3AEA5BF8A11}|Default">
   <MonoDevelop.Ide.ItemProperties.HumanProject PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="HumanProject/Sportsman.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="HumanProject/Boxer.cs">
     <Files>
-      <File FileName="HumanProject/Program.cs" Line="21" Column="43" />
-      <File FileName="HumanProject/Sportsman.cs" Line="120" Column="29" />
-      <File FileName="HumanProject/Boxer.cs" />
-      <File FileName="HumanProject/Runner.cs" />
-      <File FileName="HumanProject/HockeyPlayer.cs" />
+      <File FileName="HumanProject/Boxer.cs" Line="1" Column="1" />
+      <File FileName="HumanProject/Program.cs" Line="1" Column="1" />
+      <File FileName="HumanProject/Runner.cs" Line="1" Column="1" />
+      <File FileName="HumanProject/Sportsman.cs" Line="1" Column="1" />
       <File FileName="HumanProject/Human.cs" Line="1" Column="1" />
     </Files>
     <Pads>
@@ -14,7 +13,7 @@
         <State name="__root__">
           <Node name="HumanProject" expanded="True">
             <Node name="HumanProject" expanded="True">
-              <Node name="Sportsman.cs" selected="True" />
+              <Node name="Boxer.cs" selected="True" />
             </Node>
           </Node>
         </State>

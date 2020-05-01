@@ -14,7 +14,7 @@ namespace HumanProject
             {
                 if (value > 1e9) _leftHandStrength = 1e9;
                 else if (value < 0) _leftHandStrength = 0;
-                else _leftHandStrength = value;
+                else _leftHandStrength = Math.Round(value, 4);
             }
         }
         double _leftHandStrength;
@@ -29,7 +29,7 @@ namespace HumanProject
             {
                 if (value > 1e9) _rightHandStrength = 1e9;
                 else if (value < 0) _rightHandStrength = 0;
-                else _rightHandStrength = value;
+                else _rightHandStrength = Math.Round(value, 4);
             }
         }
         double _rightHandStrength;

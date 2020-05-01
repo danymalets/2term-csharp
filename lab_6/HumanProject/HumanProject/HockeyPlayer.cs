@@ -26,7 +26,7 @@ namespace HumanProject
             {
                 if (value > 40) _speed = 40;
                 else if (value < 0) _speed = 0;
-                else _speed = value;
+                else _speed = Math.Round(value, 4);
             }
         }
         double _speed;
@@ -41,7 +41,7 @@ namespace HumanProject
             {
                 if (value > 1e9) _strikePower = 1e9;
                 else if (value < 0) _strikePower = 0;
-                else _strikePower = value;
+                else _strikePower = Math.Round(value, 4);
             }
         }
         double _strikePower;

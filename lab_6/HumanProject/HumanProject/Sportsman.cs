@@ -44,7 +44,7 @@ namespace HumanProject
             {
                 if (value < 0) _weight = 0;
                 else if (value > 150) _weight = 150;
-                else _weight = value;
+                else _weight = Math.Round(value, 4);
             }
         }
         double _weight;
@@ -59,7 +59,7 @@ namespace HumanProject
             {
                 if (value < 0) _height = 0;
                 else if (value > 250) _height = 250;
-                else _height = value;
+                else _height = Math.Round(value, 4);
             }
         }
         double _height;

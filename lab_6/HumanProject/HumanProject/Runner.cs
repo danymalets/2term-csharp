@@ -15,7 +15,7 @@ namespace HumanProject
             {
                 if (value > 40) _speed = 40;
                 else if (value < 0) _speed = 0;
-                else _speed = value;
+                else _speed = Math.Round(value, 4);
             }
         }
         double _speed;

@@ -13,7 +13,7 @@ namespace HumanProject
             {
                 if (value > 1e9) _leftHandStrength = 1e9;
                 else if (value < 0) _leftHandStrength = 0;
-                else _leftHandStrength = value;
+                else _leftHandStrength = Math.Round(value, 4);
             }
         }
         double _leftHandStrength;
@@ -28,7 +28,7 @@ namespace HumanProject
             {
                 if (value > 1e9) _rightHandStrength = 1e9;
                 else if (value < 0) _rightHandStrength = 0;
-                else _rightHandStrength = value;
+                else _rightHandStrength = Math.Round(value, 4);
             }
         }
         double _rightHandStrength;
@@ -43,7 +43,7 @@ namespace HumanProject
             {
                 if (value > 1e9) _leftFootStrength = 1e9;
                 else if (value < 0) _leftFootStrength = 0;
-                else _leftFootStrength = value;
+                else _leftFootStrength = Math.Round(value, 4);
             }
         }
         double _leftFootStrength;
@@ -58,7 +58,7 @@ namespace HumanProject
             {
                 if (value > 1e9) _rightFootStrength = 1e9;
                 else if (value < 0) _rightFootStrength = 0;
-                else _rightFootStrength = value;
+                else _rightFootStrength = Math.Round(value, 4);
             }
         }
         double _rightFootStrength;
