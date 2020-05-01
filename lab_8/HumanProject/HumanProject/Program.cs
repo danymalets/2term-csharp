@@ -71,18 +71,20 @@ namespace HumanProject
                                       "4. Beef\n" +
                                       "5. Fruits\n" +
                                       "6. Hamburger\n" +
-                                      "7. Exit");
-                    int food = ReadInt(7);
-                    if (food == 7) continue;
+                                      "7. No food\n" +
+                                      "8. Exit");
+                    int food = ReadInt(8);
+                    if (food == 8) continue;
                     Console.WriteLine("Enter drink:\n" +
                                       "1. Water\n" +
                                       "2. Juice\n" +
                                       "3. Tea\n" +
                                       "4. CocaCola\n" +
                                       "5. SparklingWater\n" +
-                                      "6. Exit");
+                                      "6. No drink\n" +
+                                      "7. Exit");
                     int drink = ReadInt(7);
-                    if (drink == 6) continue;
+                    if (drink == 7) continue;
                     sportsman.ChangeMenu(num, (SportsFood)food, (SportsDrinks)drink);
                 }
                 else if (action == 3)
@@ -94,7 +96,14 @@ namespace HumanProject
                                       "4. Exit");
                     int num = ReadInt(4);
                     if (num == 4) continue;
-                    sportsman.HaveMeal(num);
+                    try
+                    {
+                        sportsman.HaveMeal(num);
+                    }
+                    catch
+                    {
+                        Console.WriteLine("Nothing to eat or drink!");
+                    }
                 }
                 else if (action == 4)
                 {

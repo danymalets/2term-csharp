@@ -9,7 +9,8 @@ namespace HumanProject
         Buckwheat,
         Beef,
         Fruits,
-        Hamburger
+        Hamburger,
+        Nothing
     }
 
     public enum SportsDrinks
@@ -18,7 +19,8 @@ namespace HumanProject
         Juice,
         Tea,
         CocaCola,
-        SparklingWater
+        SparklingWater,
+        Nothing
     }
 
     public struct SportsMeal
@@ -116,7 +118,7 @@ namespace HumanProject
                 case 1: ChangeMenu(ref Menu.Breakfast, food, drink); return;
                 case 2: ChangeMenu(ref Menu.Lunch, food, drink); return;
                 case 3: ChangeMenu(ref Menu.Dinner, food, drink); return;
-                default: throw new Exception("Wrong meal number");
+                default: throw new ArgumentException("Wrong meal number");
             }
         }
 
@@ -133,12 +135,14 @@ namespace HumanProject
                 case 1: HaveMeal(Menu.Breakfast); return;
                 case 2: HaveMeal(Menu.Lunch); return;
                 case 3: HaveMeal(Menu.Dinner); return;
-                default: throw new Exception("Wrong meal number");
+                default: throw new ArgumentException("Wrong meal number");
             }
         }
 
         public void HaveMeal(SportsMeal meal)
         {
+            if (meal.Food == SportsFood.Nothing) throw new Exception("Nothing to eat");
+            if (meal.Drink == SportsDrinks.Nothing) throw new Exception("Nothing to drink");
             double pWeight = Weight;
             double pHeight = Height;
             switch (meal.Food)
