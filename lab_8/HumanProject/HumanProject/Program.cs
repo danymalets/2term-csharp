@@ -8,8 +8,8 @@ namespace HumanProject
     {
         static void Main(string[] args)
         {
-            Sportsman sportsman = new Boxer("Khabib Nurmagomedov", "kn",
-                                            70, 178, 900, 900);
+            Sportsman sportsman = new Boxer("Mike Tyson", "0",
+                                            98, 180, 900, 900);
             while (true)
             {
                 string s = sportsman.GetType().ToString();
@@ -21,8 +21,9 @@ namespace HumanProject
                                   "3. Have a meal\n" +
                                   "4. Train\n" +
                                   "5. Show menu\n" +
-                                  "6. Сhange handlers\n" + 
-                                  "7. Exit");
+                                  "6. Сhange parameter handlers\n" +
+                                  "7. Change meal handlers\n" +
+                                  "8. Exit");
                 int action = ReadInt(7);
                 if (action == 1)
                 {
@@ -131,24 +132,59 @@ namespace HumanProject
                                       "4. Exit");
                     action = ReadInt(4);
 
-                    Sportsman.MyHandler ShowChange = delegate (string parameter, double prValue, double value)
-                    {
-                        string add = Math.Round(value - prValue, 4).ToString();
-                        if (add[0] != '-') add = '+' + add;
-                        Console.WriteLine(string.Format("{0} --- {1} -> ({2}) -> {3}", parameter, prValue, add, value));
-                    };
-
                     if (action == 1)
                     {
-                        sportsman.Message = (parameter, prValue, value) => Console.WriteLine(parameter + " changed");
+                        sportsman.ParameterChangeMessage =
+                            (parameter, prValue, value) => Console.WriteLine(parameter + " changed");
                     }
                     else if (action == 2)
                     {
-                        sportsman.Message = ShowChange;
+                        sportsman.ParameterChangeMessage = delegate (string parameter, double prValue, double value)
+                        {
+                            string add = Math.Round(value - prValue, 4).ToString();
+                            if (add[0] != '-') add = '+' + add;
+                            Console.WriteLine(string.Format("{0} --- {1} -> ({2}) -> {3}", parameter, prValue, add, value));
+                        };
                     }
                     else if (action == 4)
                     {
-                        sportsman.Message = null;
+                        sportsman.ParameterChangeMessage = null;
+                    }
+                }
+                else if (action == 7)
+                {
+                    Console.WriteLine("Enter:\n" +
+                                      "1. Show food and drink at meal time\n" +
+                                      "2. Remove messages at meal time\n" +
+                                      "3. Add the message \"Bon appetit!\"\n" +
+                                      "4. Remove the message \"Bon appetit!\"\n" +
+                                      "5. Exit");
+                    action = ReadInt(5);
+
+                    Sportsman.MealHandler ShowMeal = delegate (SportsMeal meal)
+                    {
+                        Console.WriteLine(string.Format("Food = {0}, Drink = {1}", meal.Food, meal.Drink));
+                    };
+
+                    Sportsman.MealHandler ShowMessage = delegate (SportsMeal meal)
+                    {
+                        Console.WriteLine("Bon appetit!");
+                    };
+                    if (action == 1)
+                    {
+                        sportsman.MealEvent += ShowMeal;
+                    }
+                    else if (action == 2)
+                    {
+                        sportsman.MealEvent -= ShowMeal;
+                    }
+                    else if (action == 3)
+                    {
+                        sportsman.MealEvent += ShowMessage;
+                    }
+                    else if (action == 4)
+                    {
+                        sportsman.MealEvent -= ShowMessage;
                     }
                 }
                 else break;

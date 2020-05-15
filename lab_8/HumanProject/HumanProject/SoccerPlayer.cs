@@ -104,8 +104,8 @@ namespace HumanProject
             double pStrikePower = StrikePower;
             Speed += 0.001 * minutes * random.Next(1, 11);
             StrikePower += 0.01 * minutes * random.Next(1, 11);
-            Message?.Invoke("speed", pSpeed, Speed);
-            Message?.Invoke("strike power", pStrikePower, StrikePower);
+            ParameterChangeMessage?.Invoke("speed", pSpeed, Speed);
+            ParameterChangeMessage?.Invoke("strike power", pStrikePower, StrikePower);
         }
 
         public void LeaveTeam()

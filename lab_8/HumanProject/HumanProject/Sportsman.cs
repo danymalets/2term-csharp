@@ -36,8 +36,11 @@ namespace HumanProject
 
     public class Sportsman : Human
     {
-        public delegate void MyHandler(string parameter, double prValue, double value);
-        public MyHandler Message;
+        public delegate void ParameterChangeHandler(string parameter, double prValue, double value);
+        public ParameterChangeHandler ParameterChangeMessage;
+
+        public delegate void MealHandler(SportsMeal meal);
+        public event MealHandler MealEvent;
 
         public double Weight
         {
@@ -143,6 +146,7 @@ namespace HumanProject
         {
             if (meal.Food == SportsFood.Nothing) throw new Exception("Nothing to eat");
             if (meal.Drink == SportsDrinks.Nothing) throw new Exception("Nothing to drink");
+            MealEvent?.Invoke(meal);
             double pWeight = Weight;
             double pHeight = Height;
             switch (meal.Food)
@@ -199,8 +203,8 @@ namespace HumanProject
                 default:
                     break;
             }
-            Message?.Invoke("weight", pWeight, Weight);
-            Message?.Invoke("height", pHeight, Height);
+            ParameterChangeMessage?.Invoke("weight", pWeight, Weight);
+            ParameterChangeMessage?.Invoke("height", pHeight, Height);
         }
 
         public virtual void Train(int minutes)
@@ -210,8 +214,8 @@ namespace HumanProject
             double pHeight = Height;
             Weight -= 0.001 * minutes * random.Next(1, 11);
             Height += 0.0001 * minutes * random.Next(-1, 3);
-            Message?.Invoke("weight", pWeight, Weight);
-            Message?.Invoke("height", pHeight, Height);
+            ParameterChangeMessage?.Invoke("weight", pWeight, Weight);
+            ParameterChangeMessage?.Invoke("height", pHeight, Height);
         }
     }
 }

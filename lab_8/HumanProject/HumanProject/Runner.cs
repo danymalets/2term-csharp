@@ -58,7 +58,7 @@ namespace HumanProject
             Random random = new Random();
             double pSpeed = Speed;
             Speed += 0.001 * minutes * random.Next(1, 11);
-            Message?.Invoke("speed", pSpeed, Speed);
+            ParameterChangeMessage?.Invoke("speed", pSpeed, Speed);
         }
 
         public int CompareTo(Runner other)

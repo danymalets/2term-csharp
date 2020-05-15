@@ -36,20 +36,20 @@ namespace HumanProject
             DateOfBirth = DateTime.Now;
         }
 
-        public Human(string fullName, string identifier, bool isMale)
+        public Human(string fullName, string identifier, Genders gender)
         {
             FullName = fullName;
             Identifier = identifier;
-            Gender = Genders.Male;
+            Gender = gender;
             DateOfBirth = DateTime.Now;
         }
 
-        public Human(string fullName, string identifier, bool isMale,
+        public Human(string fullName, string identifier, Genders gender,
             DateTime dateOfBirth, Human mother, Human father)
         {
             FullName = fullName;
             Identifier = identifier;
-            Gender = Genders.Male;
+            Gender = gender;
             DateOfBirth = dateOfBirth;
             Mother = mother;
             Father = father;

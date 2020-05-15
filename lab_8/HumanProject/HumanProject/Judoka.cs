@@ -119,10 +119,10 @@ namespace HumanProject
             double pRightFootStrength = RightFootStrength;
             LeftHandStrength += 0.01 * minutes * random.Next(1, 11);
             RightHandStrength += 0.01 * minutes * random.Next(1, 11);
-            Message?.Invoke("left hand strength", pLeftHandStrength, LeftHandStrength);
-            Message?.Invoke("right hand strength", pRightHandStrength, RightHandStrength);
-            Message?.Invoke("left foot strength", pLeftFootStrength, LeftFootStrength);
-            Message?.Invoke("right foot strength", pRightFootStrength, RightFootStrength);
+            ParameterChangeMessage?.Invoke("left hand strength", pLeftHandStrength, LeftHandStrength);
+            ParameterChangeMessage?.Invoke("right hand strength", pRightHandStrength, RightHandStrength);
+            ParameterChangeMessage?.Invoke("left foot strength", pLeftFootStrength, LeftFootStrength);
+            ParameterChangeMessage?.Invoke("right foot strength", pRightFootStrength, RightFootStrength);
         }
 
         public double GetTotalStrength()
