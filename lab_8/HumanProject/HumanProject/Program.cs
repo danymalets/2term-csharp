@@ -8,6 +8,20 @@ namespace HumanProject
     {
         static void Main(string[] args)
         {
+            Human.SameSexMarriageEvent += (Genders gender) => Console.WriteLine("Same-sex marriage prohibited");
+
+            Human.DivorceEvent += () => Console.WriteLine("It's a pity!");
+
+            Human h1 = new Human("1", "1", Genders.Male), h2 = new Human("2", "2", Genders.Male);
+            Human.Marriage(h1, h2);
+
+            h1 = new Human("1", "1", Genders.Male);
+            h2 = new Human("2", "2", Genders.Female);
+            Human.Marriage(h1, h2);
+
+            h1.Divorce();
+
+
             Sportsman sportsman = new Boxer("Mike Tyson", "0",
                                             98, 180, 900, 900);
             while (true)

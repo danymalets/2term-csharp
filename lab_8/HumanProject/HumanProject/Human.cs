@@ -11,6 +11,12 @@ namespace HumanProject
 
     public class Human : IComparable<Human>
     {
+        public delegate void SameSexMarriageHandler(Genders gender);
+        static public event SameSexMarriageHandler SameSexMarriageEvent;
+
+        public delegate void DivorceHandler();
+        static public event DivorceHandler DivorceEvent;
+
         public string FullName { get; private set; }
         public string Identifier { get; private set; }
         public Genders Gender { get; private set; }
@@ -120,7 +126,11 @@ namespace HumanProject
 
         public static bool Marriage(Human human1, Human human2)
         {
-            if (human1.Gender == human2.Gender) return false;
+            if (human1.Gender == human2.Gender)
+            {
+                SameSexMarriageEvent?.Invoke(human1.Gender);
+                return false;
+            }
             human1.Partner = human2;
             human2.Partner = human1;
             return true;
@@ -130,6 +140,7 @@ namespace HumanProject
         {
             Partner.Partner = null;
             Partner = null;
+            DivorceEvent?.Invoke();
         }
 
         public static int GetAge(DateTime dateOfBirth)
